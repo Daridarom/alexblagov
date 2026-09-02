@@ -1,4 +1,5 @@
-import Image from "next/image";
+import NextImage from "next/image";
+import type { ComponentProps } from "react";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -14,6 +15,17 @@ import {
   Sparkles,
 } from "lucide-react";
 import MobileMenu from "./mobile-menu";
+
+const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+function Image({ src, ...props }: ComponentProps<typeof NextImage>) {
+  const resolvedSrc =
+    typeof src === "string" && src.startsWith("/")
+      ? `${publicBasePath}${src}`
+      : src;
+
+  return <NextImage src={resolvedSrc} {...props} />;
+}
 
 const socialLinks = [
   ["Telegram", "https://t.me/blagovstyle"],
@@ -111,7 +123,7 @@ export default function Home() {
     name: "Александр Леонидович Благов",
     alternateName: "Александр Благов",
     url: "https://alexblagov.ru/",
-    image: "/images/alexander-crimea-studio-v5.webp",
+    image: `${publicBasePath}/images/alexander-crimea-studio-v5.webp`,
     jobTitle: "Предприниматель, инвестор, девелопер",
     description:
       "Предприниматель и девелопер, работающий в Крыму; руководитель компании «Точка Притяжения», семейного проекта TOP THAI SPA и автор проекта «Жизнь без страха».",
