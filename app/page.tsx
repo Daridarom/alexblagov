@@ -41,11 +41,11 @@ const projectFacts = [
 
 const territoryProjects = [
   {
-    name: "Горизонт 45 · Асгард",
+    name: "Горизонт 45",
     type: "Рекреация и экотуризм",
     text: "Концепция у Бухты Космонавтов: размещение, SPA, панорамное кафе, открытый берег и экотропы.",
-    image: "/images/project-horizon-asgard.webp",
-    imageAlt: "Обзорная концепция рекреационного проекта Горизонт 45 и Асгард у моря",
+    image: "/images/project-horizon-45.webp",
+    imageAlt: "Обзорная концепция рекреационного проекта Горизонт 45 у моря",
   },
   {
     name: "Элиос",
@@ -241,7 +241,7 @@ export default function Home() {
                 <div className="project-disclosure-visual">
                   <Image
                     src="/images/project-horizon-events.webp"
-                    alt="Амфитеатр и событийная площадка проекта Горизонт 45 и Асгард"
+                    alt="Амфитеатр и событийная площадка проекта Горизонт 45"
                     fill
                     unoptimized
                     sizes="(max-width: 820px) 100vw, 28vw"
@@ -336,7 +336,7 @@ export default function Home() {
             <div><HeartHandshake size={20} /><span>Семейный бизнес</span></div>
           </div>
           <div className="spa-actions">
-            <a className="button button-dark" href="https://top-thai-spa.clients.site/" target="_blank" rel="noreferrer">Сайт и запись <ArrowUpRight size={18} /></a>
+            <a className="button button-dark" href="https://topthaispa.ru/" target="_blank" rel="noreferrer">Сайт и запись <ArrowUpRight size={18} /></a>
             <a className="return-link" href="#today">Вернуться к направлениям ↑</a>
           </div>
         </div>
@@ -448,7 +448,7 @@ export default function Home() {
       <section id="media" className="media-section section-light" aria-labelledby="media-title">
         <div className="section-heading split-heading media-heading">
           <div><p className="section-kicker">Смотреть</p><h2 id="media-title">Видео и выступления</h2></div>
-          <p>Публичные материалы размещаются через российские видеоплатформы и проигрываются прямо на странице.</p>
+          <p>Публичные выступления, архивные материалы и телевизионные проекты Александра.</p>
         </div>
         <div className="video-layout">
           <div className="video-frame">
@@ -482,7 +482,6 @@ export default function Home() {
             <p>Официальный выпуск НТВ: скорость, выносливость и характер Александра в экстремальном соревновательном формате.</p>
           </div>
         </div>
-        <p className="media-note">Оба видео встроены непосредственно в страницу: превью, запуск и полноэкранный режим доступны без перехода на внешний сайт.</p>
       </section>
 
       <section className="timeline-section section-dark" aria-labelledby="timeline-title">
@@ -502,3 +501,4 @@ export default function Home() {
     </main>
   );
 }
+
