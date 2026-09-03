@@ -121,10 +121,10 @@ export default function Home() {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Александр Леонидович Благов",
+    name: "Александр Валерьевич Благов",
     alternateName: "Александр Благов",
     url: "https://alexblagov.ru/",
-    image: `${publicBasePath}/images/alexander-hero-original-close.webp`,
+    image: `${publicBasePath}/images/alexander-hero-coast-v6.webp`,
     jobTitle: "Предприниматель, инвестор, девелопер",
     description:
       "Предприниматель и девелопер, работающий в Крыму; руководитель компании «Точка Притяжения», семейного проекта TOP THAI SPA и автор проекта «Жизнь без страха».",
@@ -180,18 +180,19 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-visual">
+        <div className="hero-visual hero-photo">
           <div className="portrait-frame">
             <Image
               src="/images/alexander-hero-coast-v6.webp"
               alt="Александр Благов на побережье у Бухты Космонавтов"
-              fill priority unoptimized sizes="(max-width: 820px) 1px, 57vw" className="portrait portrait-desktop"
+              fill priority unoptimized sizes="(max-width: 820px) 1px, 57vw" className="portrait hero-photo-image portrait-desktop"
             />
             <Image
               src="/images/alexander-hero-coast-mobile-v6.webp"
-              alt=""
-              fill priority unoptimized sizes="(max-width: 820px) 100vw, 1px" className="portrait portrait-mobile"
+              alt="Александр Благов на побережье Крыма"
+              fill priority unoptimized sizes="(max-width: 820px) 100vw, 1px" className="portrait hero-photo-image portrait-mobile"
             />
+            <div className="hero-photo-shade" aria-hidden="true" />
           </div>
           <div className="location-note"><MapPin size={17} strokeWidth={1.6} /><span>Крым · Керчь</span></div>
         </div>
@@ -417,7 +418,7 @@ export default function Home() {
 
       <section className="legacy-section section-dark" aria-labelledby="legacy-title">
         <div className="legacy-image">
-          <Image src="/images/alexander-life-guitar-archive.webp" alt="Александр Благов с гитарой на природе" fill unoptimized sizes="(max-width: 900px) 100vw, 46vw" className="cover-image" />
+          <Image src="/images/alexander-life-guitar-restored-v2.webp" alt="Александр Благов с гитарой на природе" fill unoptimized sizes="(max-width: 900px) 100vw, 46vw" className="cover-image" />
           <span className="vertical-caption">Практика · внимание · действие</span>
         </div>
         <div className="legacy-copy">
@@ -431,7 +432,7 @@ export default function Home() {
 
       <section className="facts-section" aria-labelledby="facts-title">
         <div className="facts-visual">
-          <Image src="/images/alexander-life-stage-archive.webp" alt="Александр Благов проводит программу для аудитории" fill unoptimized sizes="(max-width: 820px) 100vw, 34vw" />
+          <Image src="/images/alexander-public-speaking-real.webp" alt="Александр Благов выступает перед аудиторией" fill unoptimized sizes="(max-width: 820px) 100vw, 34vw" />
           <span>Практика · сцена · работа с людьми</span>
         </div>
         <div className="facts-content">
@@ -444,7 +445,7 @@ export default function Home() {
 
       <section id="book" className="book-section" aria-labelledby="book-title">
         <div className="book-art-panel">
-          <Image src="/images/alexander-book-published-real.webp" alt="Александр Благов с изданной книгой Жизнь без страха" fill unoptimized sizes="(max-width: 900px) 100vw, 43vw" className="book-photo" />
+          <Image src="/images/alexander-book-published-restored.webp" alt="Александр Благов с изданной книгой Жизнь без страха" fill unoptimized sizes="(max-width: 900px) 100vw, 43vw" className="book-photo" />
           <span className="book-photo-caption">Изданная книга · печатная версия</span>
         </div>
         <div className="book-copy">

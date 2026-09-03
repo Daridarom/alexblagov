@@ -7,16 +7,13 @@ export const metadata: Metadata = {
   title: "Александр Благов — предприниматель, инвестор, проекты в Крыму",
   description:
     "Личный сайт Александра Благова: «Точка Притяжения», TOP THAI SPA, проекты в Крыму, «Жизнь без страха», телесные практики, спорт и творческий путь.",
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Александр Благов",
     description:
       "Проекты Александра Благова: территории Крыма, TOP THAI SPA и работа с сообществами.",
     type: "profile",
     locale: "ru_RU",
-  },
-  other: {
-    "codex-preview": "development",
   },
   icons: {
     icon: `${publicBasePath}/favicon.svg`,

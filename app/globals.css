@@ -227,29 +227,37 @@ a:focus-visible { outline: 2px solid var(--solar); outline-offset: 5px; }
 .light-link::after { background: var(--bronze-light); }
 .dark-link::after { background: var(--ink); }
 .hero-visual {
+  background: #1b2826;
+  isolation: isolate;
   min-height: 620px;
   overflow: hidden;
   position: relative;
   z-index: 2;
 }
-.portrait-frame { height: 100%; overflow: hidden; position: relative; }
-.portrait-frame::before {
-  background: linear-gradient(90deg, rgba(11, 15, 15, 0.72), transparent 18%);
+.portrait-frame {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.hero-photo-image {
+  animation: hero-photo-zoom 18s ease-in-out infinite alternate;
+  filter: saturate(0.88) contrast(1.025) brightness(0.95);
+  object-fit: cover;
+  object-position: 67% center;
+  transform: scale(1.015);
+  transform-origin: center;
+  will-change: transform;
+}
+.hero-photo-shade {
+  background:
+    linear-gradient(90deg, rgba(11, 15, 15, 0.66), transparent 18%),
+    linear-gradient(180deg, transparent 64%, rgba(11, 15, 15, 0.67));
   content: "";
   inset: 0;
   pointer-events: none;
   position: absolute;
-  z-index: 1;
+  z-index: 3;
 }
-.portrait-frame::after {
-  background: linear-gradient(180deg, transparent 66%, rgba(11, 15, 15, 0.65));
-  content: "";
-  inset: 0;
-  position: absolute;
-  z-index: 1;
-}
-.portrait { filter: saturate(0.88) contrast(1.02) brightness(0.96); object-fit: cover; object-position: 67% center; }
-.portrait-desktop { animation: hero-coast-breathe 18s ease-in-out infinite alternate; transform: scale(1.012); }
 .portrait-mobile { display: none; }
 .location-note {
   align-items: center;
@@ -738,9 +746,9 @@ a:focus-visible { outline: 2px solid var(--solar); outline-offset: 5px; }
 footer { align-items: center; background: var(--ink-deep); color: #8f9996; display: flex; font-size: 12px; justify-content: space-between; letter-spacing: 0.09em; min-height: 86px; padding: 22px clamp(22px, 4.5vw, 72px); text-transform: uppercase; }
 footer a { color: var(--paper-bright); }
 
+@keyframes hero-photo-zoom { to { transform: scale(1.045); } }
 @keyframes rail-slide { to { transform: translateX(-50%); } }
 @keyframes sun-turn { to { transform: rotate(360deg); } }
-@keyframes hero-coast-breathe { to { transform: scale(1.045); } }
 @keyframes cinematic-breathe { to { transform: scale(1.055); } }
 @keyframes marker-drift { 0%, 100% { right: 42%; } 50% { right: 58%; } }
 @keyframes latitude-pulse { 0%, 100% { left: 16%; opacity: .4; } 50% { left: 78%; opacity: 1; } }
@@ -806,10 +814,11 @@ footer a { color: var(--paper-bright); }
   .hero-lead { margin-top: 28px; max-width: 620px; }
   .hero-status { max-width: 650px; }
   .hero-visual { aspect-ratio: 4 / 5; height: auto; max-height: 680px; min-height: 0; }
-  .portrait-frame::before { display: none; }
-  .portrait-frame::after { background: linear-gradient(0deg, rgba(11, 15, 15, 0.62), transparent 42%); }
+  .portrait-frame { height: 100%; max-width: none; right: auto; }
+  .hero-photo-image { object-position: center 48%; }
   .portrait-desktop { display: none; }
-  .portrait-mobile { animation: hero-coast-breathe 18s ease-in-out infinite alternate; display: block; object-position: center; transform: scale(1.012); }
+  .portrait-mobile { display: block; }
+  .hero-photo-shade { background: linear-gradient(180deg, transparent 62%, rgba(11, 15, 15, 0.68)); }
   .location-note { bottom: 20px; left: 20px; }
   .hero-solar-watermark { bottom: auto; height: 410px; left: -145px; top: 195px; width: 360px; }
   .intro,
@@ -994,4 +1003,5 @@ footer a { color: var(--paper-bright); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .hero-photo-image { animation: none !important; transform: scale(1.02) !important; }
 }
