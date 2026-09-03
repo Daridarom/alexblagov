@@ -15,6 +15,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import MobileMenu from "./mobile-menu";
+import VkClipsCarousel from "./vk-clips-carousel";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -123,7 +124,7 @@ export default function Home() {
     name: "Александр Леонидович Благов",
     alternateName: "Александр Благов",
     url: "https://alexblagov.ru/",
-    image: `${publicBasePath}/images/alexander-crimea-studio-v5.webp`,
+    image: `${publicBasePath}/images/alexander-hero-editorial-v6.webp`,
     jobTitle: "Предприниматель, инвестор, девелопер",
     description:
       "Предприниматель и девелопер, работающий в Крыму; руководитель компании «Точка Притяжения», семейного проекта TOP THAI SPA и автор проекта «Жизнь без страха».",
@@ -182,8 +183,8 @@ export default function Home() {
         <div className="hero-visual">
           <div className="portrait-frame">
             <Image
-              src="/images/alexander-crimea-studio-v5.webp"
-              alt="Александр Благов в панорамной студии на крымском побережье"
+              src="/images/alexander-hero-editorial-v6.webp"
+              alt="Александр Благов на современной террасе над крымским побережьем"
               fill priority unoptimized sizes="(max-width: 820px) 100vw, 45vw" className="portrait"
             />
           </div>
@@ -482,6 +483,7 @@ export default function Home() {
             <p>Официальный выпуск НТВ: скорость, выносливость и характер Александра в экстремальном соревновательном формате.</p>
           </div>
         </div>
+        <VkClipsCarousel />
       </section>
 
       <section className="timeline-section section-dark" aria-labelledby="timeline-title">
@@ -501,4 +503,3 @@ export default function Home() {
     </main>
   );
 }
-
