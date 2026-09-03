@@ -124,7 +124,7 @@ export default function Home() {
     name: "Александр Леонидович Благов",
     alternateName: "Александр Благов",
     url: "https://alexblagov.ru/",
-    image: `${publicBasePath}/images/alexander-hero-editorial-v6.webp`,
+    image: `${publicBasePath}/images/alexander-hero-original-close.webp`,
     jobTitle: "Предприниматель, инвестор, девелопер",
     description:
       "Предприниматель и девелопер, работающий в Крыму; руководитель компании «Точка Притяжения», семейного проекта TOP THAI SPA и автор проекта «Жизнь без страха».",
@@ -183,8 +183,8 @@ export default function Home() {
         <div className="hero-visual">
           <div className="portrait-frame">
             <Image
-              src="/images/alexander-hero-editorial-v6.webp"
-              alt="Александр Благов на современной террасе над крымским побережьем"
+              src="/images/alexander-hero-original-close.webp"
+              alt="Портрет Александра Благова"
               fill priority unoptimized sizes="(max-width: 820px) 100vw, 45vw" className="portrait"
             />
           </div>
@@ -370,7 +370,7 @@ export default function Home() {
         </div>
         <div className="story-mosaic">
           <figure className="story-photo story-photo-tall">
-            <Image src="/images/alexander-adventure-real.webp" alt="Александр Благов во время динамичной фотосъёмки" fill unoptimized sizes="(max-width: 820px) 100vw, 35vw" className="cover-image" />
+            <Image src="/images/alexander-adventure-live.webp" alt="Александр Благов во время выездной командной программы" fill unoptimized sizes="(max-width: 820px) 100vw, 35vw" className="cover-image" />
             <figcaption><Mountain size={19} /> Приключение · движение · команда</figcaption>
           </figure>
           <article className="story-note">
@@ -381,7 +381,7 @@ export default function Home() {
             </div>
           </article>
           <figure className="story-illustration story-fire-photo">
-            <Image src="/images/alexander-fire-archive.webp" alt="Александр Благов во время выступления с огнём" fill unoptimized sizes="(max-width: 820px) 100vw, 34vw" className="cover-image" />
+            <Image src="/images/alexander-fire-live.webp" alt="Александр Благов во время выступления с огнём" fill unoptimized sizes="(max-width: 820px) 100vw, 34vw" className="cover-image" />
             <figcaption>Архив · искусство работы с огнём</figcaption>
           </figure>
           <figure className="story-photo story-photo-wide">
@@ -404,7 +404,7 @@ export default function Home() {
 
       <section className="legacy-section section-dark" aria-labelledby="legacy-title">
         <div className="legacy-image">
-          <Image src="/images/alexander-natural-real.webp" alt="Александр Благов на природе в светлой одежде" fill unoptimized sizes="(max-width: 900px) 100vw, 46vw" className="cover-image" />
+          <Image src="/images/alexander-life-guitar-archive.webp" alt="Александр Благов с гитарой на природе" fill unoptimized sizes="(max-width: 900px) 100vw, 46vw" className="cover-image" />
           <span className="vertical-caption">Практика · внимание · действие</span>
         </div>
         <div className="legacy-copy">
@@ -418,7 +418,7 @@ export default function Home() {
 
       <section className="facts-section" aria-labelledby="facts-title">
         <div className="facts-visual">
-          <Image src="/images/alexander-public-speaking-real.webp" alt="Александр Благов проводит публичную программу" fill unoptimized sizes="(max-width: 820px) 100vw, 34vw" />
+          <Image src="/images/alexander-life-stage-archive.webp" alt="Александр Благов проводит программу для аудитории" fill unoptimized sizes="(max-width: 820px) 100vw, 34vw" />
           <span>Практика · сцена · работа с людьми</span>
         </div>
         <div className="facts-content">
@@ -487,7 +487,14 @@ export default function Home() {
       </section>
 
       <section className="timeline-section section-dark" aria-labelledby="timeline-title">
-        <div className="timeline-heading"><p className="section-kicker">Хронология</p><h2 id="timeline-title">Ключевые этапы</h2><p>События, из которых сложились нынешние направления Александра.</p></div>
+        <div className="timeline-heading">
+          <p className="section-kicker">Хронология</p>
+          <h2 id="timeline-title">Ключевые этапы</h2>
+          <p>События, из которых сложились нынешние направления Александра.</p>
+          <div className="timeline-portrait">
+            <Image src="/images/alexander-portrait-archive-bw.webp" alt="Архивный портрет Александра Благова" fill unoptimized sizes="(max-width: 820px) 100vw, 31vw" />
+          </div>
+        </div>
         <ol className="timeline-list">{timeline.map(([year, text]) => <li key={year}><span>{year}</span><p>{text}</p></li>)}</ol>
       </section>
 
