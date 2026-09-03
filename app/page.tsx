@@ -15,7 +15,6 @@ import {
   Sparkles,
 } from "lucide-react";
 import MobileMenu from "./mobile-menu";
-import SpatialHero from "./spatial-hero";
 import VkClipsCarousel from "./vk-clips-carousel";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -181,31 +180,21 @@ export default function Home() {
           </div>
         </div>
 
-        <SpatialHero>
-          <div className="hero-coast-backdrop" aria-hidden="true">
-            <Image
-              src="/images/project-horizon-45.webp"
-              alt=""
-              fill
-              priority
-              unoptimized
-              sizes="(max-width: 820px) 100vw, 57vw"
-            />
-          </div>
-          <div className="hero-latitude" aria-hidden="true"><span>45° с. ш.</span><i /></div>
+        <div className="hero-visual">
           <div className="portrait-frame">
             <Image
-              src="/images/alexander-hero-original-close.webp"
-              alt="Крупный портрет Александра Благова"
-              fill
-              priority
-              unoptimized
-              sizes="(max-width: 820px) calc(100vw - 40px), 46vw"
-              className="portrait portrait-real"
+              src="/images/alexander-hero-coast-v6.webp"
+              alt="Александр Благов на побережье у Бухты Космонавтов"
+              fill priority unoptimized sizes="(max-width: 820px) 1px, 57vw" className="portrait portrait-desktop"
+            />
+            <Image
+              src="/images/alexander-hero-coast-mobile-v6.webp"
+              alt=""
+              fill priority unoptimized sizes="(max-width: 820px) 100vw, 1px" className="portrait portrait-mobile"
             />
           </div>
           <div className="location-note"><MapPin size={17} strokeWidth={1.6} /><span>Крым · Керчь</span></div>
-        </SpatialHero>
+        </div>
         <BlagovSolarCrest className="hero-solar-watermark" />
       </section>
 
