@@ -1,4 +1,5 @@
 import NextImage from "next/image";
+import Link from "next/link";
 import type { ComponentProps } from "react";
 import {
   ArrowDown,
@@ -12,10 +13,15 @@ import {
   MapPin,
   Mountain,
   PlayCircle,
+  Send,
   Sparkles,
 } from "lucide-react";
 import MobileMenu from "./mobile-menu";
 import VkClipsCarousel from "./vk-clips-carousel";
+import StageGallery from "./stage-gallery";
+import DeferredVideo from "./deferred-video";
+import ProjectExplorer from "./project-explorer";
+import ContactComposer from "./contact-composer";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -29,7 +35,9 @@ function Image({ src, ...props }: ComponentProps<typeof NextImage>) {
 }
 
 const socialLinks = [
-  ["Telegram", "https://t.me/blagovstyle"],
+  ["Точка Притяжения", "https://t.me/CrimeaPoint"],
+  ["Менеджер", "https://t.me/top_crimea_manager"],
+  ["Александр в Telegram", "https://t.me/blagovstyle"],
   ["ВКонтакте", "https://vk.com/blagovstyle"],
 ];
 
@@ -240,6 +248,7 @@ export default function Home() {
               восточном Крыму.
             </p>
             <span className="project-meta-note">Компания · недвижимость · территории</span>
+            <Link className="project-detail-link" href="/projects">Открыть портфель проектов <ArrowUpRight size={17} /></Link>
             <details className="project-disclosure">
               <summary>Что входит в направление</summary>
               <div className="project-disclosure-body">
@@ -272,6 +281,7 @@ export default function Home() {
               <summary>Подробнее о бизнесе</summary>
               <p>Пространство восстановления с мастерами из Таиланда, традиционными техниками массажа и SPA-ритуалами. Александр развивает сервис, команду и клиентский опыт вместе с семьёй.</p>
               <a href="#spa">Полная информация ниже <ArrowDown size={16} /></a>
+              <Link href="/top-thai-spa">Отдельная страница <ArrowUpRight size={16} /></Link>
             </details>
           </article>
           <article className="today-card today-life-card">
@@ -285,6 +295,7 @@ export default function Home() {
               <summary>Развернуть историю</summary>
               <p>Проект начался с тренингов, квестов и курса «Приключение». В разные годы в него вошли командные испытания, походы, огненные и телесные практики, работа с вниманием, характером и ответственностью.</p>
               <a href="#story">Продолжение ниже <ArrowDown size={16} /></a>
+              <Link href="/life-without-fear">История проекта <ArrowUpRight size={16} /></Link>
             </details>
           </article>
           <article className="project-principle association-card">
@@ -309,19 +320,7 @@ export default function Home() {
           <div><strong>Восточный Крым</strong><small>море · земля · новые пространства</small></div>
           <MapPin size={32} strokeWidth={1.2} />
         </div>
-        <div className="portfolio-grid">
-          {territoryProjects.map((project, index) => (
-            <article className={index === 0 ? "portfolio-card portfolio-card-featured" : "portfolio-card"} key={project.name}>
-              <div className="portfolio-card-visual">
-                <Image src={project.image} alt={project.imageAlt} fill unoptimized sizes="(max-width: 820px) 100vw, 34vw" />
-                <span>{String(index + 1).padStart(2, "0")}</span>
-              </div>
-              <div className="portfolio-card-top"><span>{project.type}</span></div>
-              <h3>{project.name}</h3><p>{project.text}</p>
-              <span className="portfolio-state">Проект в развитии</span>
-            </article>
-          ))}
-        </div>
+        <ProjectExplorer />
       </section>
 
       <section className="cinematic-break" aria-label="Принцип работы">
@@ -346,6 +345,7 @@ export default function Home() {
           </div>
           <div className="spa-actions">
             <a className="button button-dark" href="https://topthaispa.ru/" target="_blank" rel="noreferrer">Сайт и запись <ArrowUpRight size={18} /></a>
+            <Link className="return-link" href="/top-thai-spa">О проекте подробнее →</Link>
             <a className="return-link" href="#today">Вернуться к направлениям ↑</a>
           </div>
         </div>
@@ -427,58 +427,7 @@ export default function Home() {
             внимание, доверие и энергия группы становятся общим опытом.
           </p>
         </div>
-        <div className="live-mosaic">
-          <figure className="live-shot live-shot-entrance">
-            <Image
-              src="/images/alexander-stage-entrance-v2.webp"
-              alt="Александр Благов выходит на сцену перед большим залом"
-              fill
-              unoptimized
-              sizes="(max-width: 820px) 100vw, 58vw"
-            />
-            <figcaption><span>Выход к аудитории</span><strong>Масштаб зала</strong></figcaption>
-          </figure>
-          <figure className="live-shot live-shot-microphone">
-            <Image
-              src="/images/alexander-stage-microphone-v2.webp"
-              alt="Александр Благов выступает с микрофоном"
-              fill
-              unoptimized
-              sizes="(max-width: 820px) 100vw, 42vw"
-            />
-            <figcaption><span>Выступление</span><strong>Прямой разговор</strong></figcaption>
-          </figure>
-          <figure className="live-shot live-shot-tunnel">
-            <Image
-              src="/images/alexander-community-tunnel-v2.webp"
-              alt="Участники программы создают живой коридор поддержки"
-              fill
-              unoptimized
-              sizes="(max-width: 820px) 100vw, 33vw"
-            />
-            <figcaption><span>Группа</span><strong>Движение вместе</strong></figcaption>
-          </figure>
-          <figure className="live-shot live-shot-circle">
-            <Image
-              src="/images/alexander-community-circle-v2.webp"
-              alt="Участники программы работают в кругу в панорамном зале"
-              fill
-              unoptimized
-              sizes="(max-width: 820px) 100vw, 33vw"
-            />
-            <figcaption><span>Пространство</span><strong>Живое сообщество</strong></figcaption>
-          </figure>
-          <figure className="live-shot live-shot-emotion">
-            <Image
-              src="/images/alexander-stage-emotion-v2.webp"
-              alt="Эмоциональный эпизод выступления Александра Благова на сцене"
-              fill
-              unoptimized
-              sizes="(max-width: 820px) 100vw, 33vw"
-            />
-            <figcaption><span>Сцена</span><strong>Работа с состоянием</strong></figcaption>
-          </figure>
-        </div>
+        <StageGallery />
       </section>
 
       <section className="legacy-section section-dark" aria-labelledby="legacy-title">
@@ -491,6 +440,7 @@ export default function Home() {
           <p className="lead-paragraph">Авторский проект вырос из работы с телом, характером и групповой динамикой в большое сообщество.</p>
           <p>В разные годы это были тренинги, квесты, экстремальные туры, фестивали, игровые и телесные практики. Сегодня этот опыт собран в методологию ТОП и книгу.</p>
           <div className="legacy-tags" aria-label="Форматы проекта"><span>Методология ТОП</span><span>Городские программы</span><span>Ретриты и клуб</span><span>Работа с командами</span></div>
+          <Link className="project-detail-link project-detail-link-dark" href="/life-without-fear">Открыть историю проекта <ArrowUpRight size={17} /></Link>
           <a className="return-link return-link-dark" href="#today">Вернуться к направлениям ↑</a>
         </div>
       </section>
@@ -520,6 +470,7 @@ export default function Home() {
           <blockquote><BookOpen size={30} strokeWidth={1.25} /><p>«Обучая других, я каждый раз учусь сам».</p><cite>Александр Благов · книга, стр. 70</cite></blockquote>
           <div className="book-actions">
             <a className="button book-order" href="mailto:info@alexblagov.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B2%D0%B0">Заказать книгу <ArrowUpRight size={17} /></a>
+            <Link className="book-audio" href="/book">Страница книги</Link>
             <a className="book-audio" href="mailto:info@alexblagov.ru?subject=%D0%90%D1%83%D0%B4%D0%B8%D0%BE%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F%20%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8">Узнать об аудиоверсии</a>
           </div>
         </div>
@@ -531,15 +482,7 @@ export default function Home() {
           <p>Публичные выступления, архивные материалы и телевизионные проекты Александра.</p>
         </div>
         <div className="video-layout">
-          <div className="video-frame">
-            <iframe
-              src="https://vkvideo.ru/video_ext.php?oid=-143114802&id=456239298&hash=bc17e526c0789def"
-              title="Александр Благов — Мотивация Жизнь без страха"
-              loading="lazy"
-              allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
-              allowFullScreen
-            />
-          </div>
+          <DeferredVideo src="https://vkvideo.ru/video_ext.php?oid=-143114802&id=456239298&hash=bc17e526c0789def" title="Александр Благов — Мотивация Жизнь без страха" poster="/images/alexander-stage-microphone-v2.webp" />
           <div className="video-copy">
             <PlayCircle size={38} strokeWidth={1.2} /><span>Архив · 2019 · VK Видео</span>
             <h3>Мотивация «Жизнь без страха»</h3>
@@ -547,15 +490,7 @@ export default function Home() {
           </div>
         </div>
         <div className="video-layout video-layout-secondary">
-          <div className="video-frame">
-            <iframe
-              src="https://vkvideo.ru/video_ext.php?oid=-127401043&id=456252277&hash=19791cfdae3d84e5"
-              title="Финал проекта НТВ Гладиаторы с Александром Благовым"
-              loading="lazy"
-              allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
-              allowFullScreen
-            />
-          </div>
+          <DeferredVideo src="https://vkvideo.ru/video_ext.php?oid=-127401043&id=456252277&hash=19791cfdae3d84e5" title="Финал проекта НТВ Гладиаторы с Александром Благовым" poster="/images/alexander-gladiators-ntv-real.webp" />
           <div className="video-copy">
             <PlayCircle size={38} strokeWidth={1.2} /><span>Телепроект · 2025 · VK Видео</span>
             <h3>Финал спортивного шоу «Гладиаторы»</h3>
@@ -563,6 +498,17 @@ export default function Home() {
           </div>
         </div>
         <VkClipsCarousel />
+      </section>
+
+      <section className="proof-section" aria-labelledby="proof-title">
+        <div><p className="section-kicker">Опыт, подтверждённый делом</p><h2 id="proof-title">Сцена, спорт, проекты, люди.</h2></div>
+        <div className="proof-grid">
+          <article><strong>300+</strong><span>событий и программ</span></article>
+          <article><strong>40 000</strong><span>участников и выпускников</span></article>
+          <article><strong>2025</strong><span>финал шоу «Гладиаторы»</span></article>
+          <article><strong>2009</strong><span>начало «Жизни без страха»</span></article>
+        </div>
+        <p className="proof-note">Цифры и этапы собраны по материалам проектов Александра. Телевизионные выпуски доступны в разделе «Видео».</p>
       </section>
 
       <section className="timeline-section section-dark" aria-labelledby="timeline-title">
@@ -578,14 +524,16 @@ export default function Home() {
       </section>
 
       <section id="contact" className="contact-section" aria-labelledby="contact-title">
-        <div className="contact-lead"><p className="section-kicker">Контакты</p><h2 id="contact-title">Обсудить проект</h2><p>Девелопмент, партнёрство, выступления и авторские программы.</p></div>
+        <div className="contact-lead"><p className="section-kicker">Контакты</p><h2 id="contact-title">Обсудить проект</h2><p>Выберите направление и удобный способ связи. Сообщение можно подготовить заранее или сразу перейти в Telegram.</p></div>
         <div className="contact-main">
           <a className="contact-email" href="mailto:info@alexblagov.ru"><span>info@alexblagov.ru</span><ArrowUpRight size={32} strokeWidth={1.4} /></a>
-          <div className="social-links" aria-label="Социальные сети">{socialLinks.map(([label, href]) => <a key={label} href={href} target="_blank" rel="noreferrer">{label}<ArrowUpRight size={14} /></a>)}</div>
+          <ContactComposer />
+          <div className="social-links" aria-label="Социальные сети"><a href="https://vk.com/blagovstyle" target="_blank" rel="noreferrer">ВКонтакте <ArrowUpRight size={14} /></a></div>
         </div>
       </section>
 
-      <footer><span>© 2026 Александр Благов</span><span>Личный сайт · рабочая версия</span><a href="#top">Наверх ↑</a></footer>
+      <footer><span>© 2026 Александр Благов</span><span>Предприниматель · Крым</span><a href="#top">Наверх ↑</a></footer>
+      <a className="mobile-contact-fab" href="https://t.me/top_crimea_manager" target="_blank" rel="noreferrer" aria-label="Написать менеджеру в Telegram"><Send size={17} /> Связаться</a>
     </main>
   );
 }
