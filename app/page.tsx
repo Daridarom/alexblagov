@@ -265,7 +265,7 @@ export default function Home() {
 
         <div className="project-grid">
           <article className="today-card today-spa-card">
-            <div className="today-card-preview"><Image src="/images/alexander-top-thai-together-real.webp" alt="Александр и Наталья на открытии TOP THAI SPA" fill unoptimized sizes="(max-width: 820px) 100vw, 32vw" /></div>
+            <div className="today-card-preview"><Image src="/images/alexander-top-thai-together-harmonized.webp" alt="Александр и Наталья на открытии TOP THAI SPA" fill unoptimized sizes="(max-width: 820px) 100vw, 32vw" /></div>
             <span>02 · Семейный бизнес</span><h3>TOP THAI SPA</h3>
             <p>Действующий салон тайского массажа и SPA-программ в Керчи.</p>
             <details className="card-disclosure">
