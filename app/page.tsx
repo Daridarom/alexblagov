@@ -183,9 +183,14 @@ export default function Home() {
         <div className="hero-visual">
           <div className="portrait-frame">
             <Image
-              src="/images/alexander-hero-original-close.webp"
-              alt="Портрет Александра Благова"
-              fill priority unoptimized sizes="(max-width: 820px) 100vw, 45vw" className="portrait"
+              src="/images/alexander-hero-coast-v6.webp"
+              alt="Александр Благов на побережье у Бухты Космонавтов"
+              fill priority unoptimized sizes="(max-width: 820px) 1px, 57vw" className="portrait portrait-desktop"
+            />
+            <Image
+              src="/images/alexander-hero-coast-mobile-v6.webp"
+              alt=""
+              fill priority unoptimized sizes="(max-width: 820px) 100vw, 1px" className="portrait portrait-mobile"
             />
           </div>
           <div className="location-note"><MapPin size={17} strokeWidth={1.6} /><span>Крым · Керчь</span></div>
@@ -223,9 +228,7 @@ export default function Home() {
         </div>
 
         <article className="project-feature">
-          <div className="project-art-motif" aria-hidden="true">
-            <Image src="/images/alexander-office-art-real.webp" alt="" fill unoptimized sizes="340px" />
-          </div>
+          <div className="project-latitude-motif" aria-hidden="true"><span>45°</span><i /></div>
           <div className="project-number">01</div>
           <div className="project-copy">
             <p className="project-type">Девелопмент · Крым · с 2023 года</p>
@@ -284,9 +287,13 @@ export default function Home() {
             </details>
           </article>
           <article className="project-principle association-card">
-            <HeartHandshake size={30} strokeWidth={1.2} /><span>04 · Практика и рекордное движение</span>
-            <p>Президент Ассоциации гвоздепрактиков и основатель движения гвоздестояния в России.</p>
-            <div className="association-facts"><strong>6</strong><small>мировых рекордов в биографии</small></div>
+            <Image src="/images/alexander-nail-practice-real.webp" alt="Практика гвоздестояния на природе" fill unoptimized sizes="(max-width: 820px) 100vw, 35vw" className="association-photo" />
+            <div className="association-shade" aria-hidden="true" />
+            <div className="association-content">
+              <HeartHandshake size={30} strokeWidth={1.2} /><span>Практика и рекордное движение</span>
+              <p>Президент Ассоциации гвоздепрактиков и основатель движения гвоздестояния в России.</p>
+              <div className="association-facts"><strong>6</strong><small>мировых рекордов в биографии</small></div>
+            </div>
           </article>
         </div>
       </section>
@@ -370,13 +377,13 @@ export default function Home() {
         </div>
         <div className="story-mosaic">
           <figure className="story-photo story-photo-tall">
-            <Image src="/images/alexander-adventure-live.webp" alt="Александр Благов во время выездной командной программы" fill unoptimized sizes="(max-width: 820px) 100vw, 35vw" className="cover-image" />
-            <figcaption><Mountain size={19} /> Приключение · движение · команда</figcaption>
+            <Image src="/images/alexander-life-flower-archive.webp" alt="Александр Благов на природе в период проекта Жизнь без страха" fill unoptimized sizes="(max-width: 820px) 100vw, 35vw" className="cover-image" />
+            <figcaption><Mountain size={19} /> Живой опыт · природа · свобода</figcaption>
           </figure>
           <article className="story-note">
             <div className="story-note-preview"><Image src="/images/alexander-slavic-games-real.webp" alt="Живой кадр со славянских игр и молодецких забав" fill unoptimized sizes="(max-width: 820px) 100vw, 33vw" /></div>
             <div className="story-note-copy"><Flame size={30} strokeWidth={1.25} /><span>Из опыта программ</span>
-              <h3>Славянские игрища и молодецкие забавы</h3>
+              <h3>Славянские игры и молодецкие забавы</h3>
               <p>От больших народных игр и выездного курса «Приключение» — к телесным практикам, спорту и работе с командами.</p>
             </div>
           </article>
@@ -393,6 +400,12 @@ export default function Home() {
             <figcaption>«Гладиаторы» · НТВ · 2025</figcaption>
           </figure>
         </div>
+        <figure className="practice-band">
+          <Image src="/images/alexander-wall-practice-real.webp" alt="Командная мужская практика стенка на стенку" fill unoptimized sizes="(max-width: 820px) 100vw, 86vw" />
+          <div className="practice-band-shade" aria-hidden="true" />
+          <figcaption><span>Командная практика</span><strong>Стенка на стенку</strong><small>Доверие, взаимодействие и общая сила</small></figcaption>
+          <div className="practice-band-line" aria-hidden="true"><i /></div>
+        </figure>
         <div id="sport" className="career-strip" aria-label="Телевизионные проекты, спорт и рекорды">
           <article><span>2018 · Первый канал</span><strong>Русский ниндзя</strong><small>полуфинал</small></article>
           <article><span>2025 · НТВ</span><strong>Гладиаторы</strong><small>финал</small></article>
@@ -454,7 +467,7 @@ export default function Home() {
         <div className="video-layout">
           <div className="video-frame">
             <iframe
-              src="https://vk.com/video_ext.php?oid=-143114802&id=456239298&hd=2"
+              src="https://vkvideo.ru/video_ext.php?oid=-143114802&id=456239298&hash=bc17e526c0789def"
               title="Александр Благов — Мотивация Жизнь без страха"
               loading="lazy"
               allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
@@ -470,7 +483,7 @@ export default function Home() {
         <div className="video-layout video-layout-secondary">
           <div className="video-frame">
             <iframe
-              src="https://vk.com/video_ext.php?oid=-127401043&id=456252277&hash=19791cfdae3d84e5"
+              src="https://vkvideo.ru/video_ext.php?oid=-127401043&id=456252277&hash=19791cfdae3d84e5"
               title="Финал проекта НТВ Гладиаторы с Александром Благовым"
               loading="lazy"
               allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"

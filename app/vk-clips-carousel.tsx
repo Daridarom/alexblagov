@@ -5,12 +5,12 @@ import { useRef, useState } from "react";
 
 const clips = [
   {
-    src: "https://vk.com/video_ext.php?oid=34314310&id=456239533&hd=2",
+    src: "https://vkvideo.ru/video_ext.php?oid=34314310&id=456239533&hash=724d8caf9e3fbc86",
     title: "Личный взгляд",
     meta: "Александр Благов · VK Клипы",
   },
   {
-    src: "https://vk.com/video_ext.php?oid=34314310&id=456239477&hd=2",
+    src: "https://vkvideo.ru/video_ext.php?oid=34314310&id=456239477&hash=98c2f7d4eeddbf72",
     title: "За кадром «Гладиаторов»",
     meta: "Телепроект · VK Клипы",
   },
