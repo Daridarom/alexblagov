@@ -570,8 +570,10 @@ a:focus-visible { outline: 2px solid var(--solar); outline-offset: 5px; }
 .family-copy { align-self: stretch; display: flex; flex-direction: column; justify-content: center; overflow: hidden; padding: clamp(58px, 7vw, 112px); position: relative; }
 .family-copy h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(50px, 6vw, 88px); font-weight: 400; letter-spacing: -0.05em; line-height: 0.95; margin: 0; position: relative; z-index: 2; }
 .family-copy > p:last-of-type { color: #534c45; font-size: 16px; line-height: 1.7; margin: 31px 0 0; max-width: 480px; position: relative; z-index: 2; }
-.family-mark { bottom: -145px; color: #8f684b; height: 450px; opacity: 0.085; position: absolute; right: -115px; transform: rotate(-8deg); width: 395px; }
+.family-mark { animation: family-mark-drift 22s ease-in-out infinite alternate; bottom: -145px; color: #8f684b; height: 450px; opacity: 0.085; position: absolute; right: -115px; transform: rotate(-8deg); width: 395px; }
 .family-mark svg { height: 100%; width: 100%; }
+.family-mark .crest-rays { animation: sun-turn 34s linear infinite; transform-box: view-box; transform-origin: 56px 55px; }
+.family-mark .crest-sea { animation: family-sea-breathe 9s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
 
 .story-section { padding: clamp(94px, 9vw, 148px) clamp(22px, 7vw, 110px); }
 .story-heading { margin-bottom: 68px; }
@@ -644,7 +646,7 @@ a:focus-visible { outline: 2px solid var(--solar); outline-offset: 5px; }
 .book-photo { filter: saturate(.72) contrast(1.03); object-fit: cover; object-position: center center; }
 .book-photo-caption { bottom: 38px; color: white; font-size: 11px; font-weight: 700; left: 32px; letter-spacing: .12em; max-width: 170px; position: absolute; text-transform: uppercase; z-index: 2; }
 .book-copy { align-self: center; overflow: hidden; padding: 82px clamp(50px, 7vw, 112px); position: relative; z-index: 2; }
-.book-copy-motif { filter: grayscale(1); inset: 0 -18% 0 auto !important; object-fit: contain; object-position: right center; opacity: .055; pointer-events: none; width: 72% !important; }
+.book-copy-motif { animation: manuscript-drift 20s ease-in-out infinite alternate; filter: grayscale(1); inset: 0 -18% 0 auto !important; object-fit: contain; object-position: right center; opacity: .055; pointer-events: none; transform-origin: 68% 50%; width: 72% !important; }
 .book-copy > :not(.book-copy-motif) { position: relative; z-index: 1; }
 .book-copy .section-kicker { color: var(--bronze-light); }
 .book-copy h2 { font-size: clamp(38px, 4.7vw, 71px); line-height: 0.96; max-width: 760px; }
@@ -715,7 +717,9 @@ a:focus-visible { outline: 2px solid var(--solar); outline-offset: 5px; }
 .timeline-portrait { aspect-ratio: 4 / 5; background: #111615; margin-top: 46px; max-width: 370px; overflow: hidden; position: relative; }
 .timeline-portrait::after { background: linear-gradient(0deg, rgba(11,15,15,.3), transparent 36%); content: ""; inset: 0; pointer-events: none; position: absolute; }
 .timeline-portrait img { filter: grayscale(1) contrast(1.045); object-fit: cover; object-position: center 28%; }
-.timeline-list { border-top: 1px solid var(--line-dark); list-style: none; margin: 0; padding: 0; }
+.timeline-list { border-top: 1px solid var(--line-dark); list-style: none; margin: 0; padding: 0; position: relative; }
+.timeline-list::before { background: rgba(217, 177, 132, .16); bottom: 0; content: ""; left: -22px; position: absolute; top: 0; width: 1px; }
+.timeline-list::after { animation: timeline-light 10s ease-in-out infinite; background: linear-gradient(180deg, transparent, rgba(223, 180, 105, .95), transparent); content: ""; height: 92px; left: -22px; position: absolute; top: 0; width: 1px; }
 .timeline-list li { align-items: start; border-bottom: 1px solid var(--line-dark); display: grid; gap: 24px; grid-template-columns: minmax(132px, 0.24fr) 1fr; padding: 23px 0; }
 .timeline-list span { color: var(--bronze-light); font-family: Georgia, "Times New Roman", serif; font-size: 19px; white-space: nowrap; }
 .timeline-list p { color: #d7ddda; line-height: 1.58; margin: 0; }
@@ -737,6 +741,10 @@ footer a { color: var(--paper-bright); }
 @keyframes cinematic-breathe { to { transform: scale(1.055); } }
 @keyframes marker-drift { 0%, 100% { right: 42%; } 50% { right: 58%; } }
 @keyframes section-rise { from { opacity: 0.35; transform: translateY(42px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes family-mark-drift { from { transform: rotate(-8deg) translate3d(0, 0, 0) scale(1); } to { transform: rotate(-2deg) translate3d(-18px, -13px, 0) scale(1.035); } }
+@keyframes family-sea-breathe { from { transform: translateY(-1px); } to { transform: translateY(3px); } }
+@keyframes manuscript-drift { from { transform: translate3d(0, 0, 0) scale(1.02); } to { transform: translate3d(-3%, -1.5%, 0) scale(1.065); } }
+@keyframes timeline-light { 0% { opacity: 0; top: 0; } 12%, 86% { opacity: 1; } 100% { opacity: 0; top: calc(100% - 92px); } }
 
 @supports (animation-timeline: view()) {
   .intro-copy,
@@ -947,6 +955,7 @@ footer a { color: var(--paper-bright); }
   .role-publications-grid { grid-template-columns: 1fr; }
   .role-publications-grid a, .role-publications-grid a:nth-child(odd) { border-right: 0; padding-left: 0; padding-right: 0; }
   .timeline-list li { gap: 8px; grid-template-columns: 1fr; padding: 22px 0; }
+  .timeline-list::before, .timeline-list::after { left: -11px; }
   .timeline-list span { white-space: normal; }
   .contact-email { font-size: 21px; }
   .contact-email svg { height: 24px; width: 24px; }
