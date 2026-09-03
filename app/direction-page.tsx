@@ -8,7 +8,7 @@ type ContactLink = { href: string; label: string };
 
 export default function DirectionPage({ kicker, title, lead, image, imageAlt, facts, paragraphs, contactLabel = "Обсудить направление", contactLinks }: { kicker: string; title: string; lead: string; image: string; imageAlt: string; facts: string[]; paragraphs: string[]; contactLabel?: string; contactLinks?: ContactLink[] }) {
   const resolvedContactLinks = contactLinks ?? [
-    { href: "https://t.me/top_crimea_manager", label: contactLabel },
+    { href: `mailto:info@alexblagov.ru?subject=${encodeURIComponent(contactLabel)}`, label: contactLabel },
   ];
 
   return (

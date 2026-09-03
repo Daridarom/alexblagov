@@ -20,7 +20,7 @@ import MobileMenu from "./mobile-menu";
 import VkClipsCarousel from "./vk-clips-carousel";
 import StageGallery from "./stage-gallery";
 import DeferredVideo from "./deferred-video";
-import ContactComposer from "./contact-composer";
+import BookAudioPlayer from "./book-audio-player";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -34,9 +34,7 @@ function Image({ src, ...props }: ComponentProps<typeof NextImage>) {
 }
 
 const socialLinks = [
-  ["Точка Притяжения", "https://t.me/CrimeaPoint"],
-  ["Менеджер", "https://t.me/top_crimea_manager"],
-  ["Александр в Telegram", "https://t.me/blagovstyle"],
+  ["Telegram-канал Александра", "https://t.me/blagovstyle"],
   ["ВКонтакте", "https://vk.com/blagovstyle"],
 ];
 
@@ -249,7 +247,7 @@ export default function Home() {
             <span className="project-meta-note">Компания · недвижимость · территории</span>
             <div className="project-context-actions" aria-label="Точка Притяжения — ссылки">
               <Link className="project-detail-link" href="/projects">Открыть портфель <ArrowUpRight size={17} /></Link>
-              <a href="https://t.me/CrimeaPoint" target="_blank" rel="noreferrer">Telegram-канал <ArrowUpRight size={16} /></a>
+              <a href="https://t.me/CrimeaPoint" target="_blank" rel="noreferrer">Канал проекта <ArrowUpRight size={16} /></a>
               <a href="https://t.me/top_crimea_manager" target="_blank" rel="noreferrer">Связаться с менеджером <Send size={15} /></a>
             </div>
             <details className="project-disclosure">
@@ -344,7 +342,7 @@ export default function Home() {
         <div className="territory-contact-bar" aria-label="Контакты компании Точка Притяжения">
           <span>Точка Притяжения</span>
           <div>
-            <a href="https://t.me/CrimeaPoint" target="_blank" rel="noreferrer">Telegram-канал <ArrowUpRight size={16} /></a>
+            <a href="https://t.me/CrimeaPoint" target="_blank" rel="noreferrer">Канал проекта <ArrowUpRight size={16} /></a>
             <a href="https://t.me/top_crimea_manager" target="_blank" rel="noreferrer">Связаться с менеджером <Send size={15} /></a>
           </div>
         </div>
@@ -495,6 +493,7 @@ export default function Home() {
           <p className="section-kicker">Книга · издана</p><h2 id="book-title">«Жизнь без страха»</h2>
           <p>Личная история и телесно‑ориентированная психология: игровые практики, дисциплина, внимание к себе и опыт создания мест силы. Доступна печатная и аудиоверсия.</p>
           <blockquote><BookOpen size={30} strokeWidth={1.25} /><p>«Обучая других, я каждый раз учусь сам».</p><cite>Александр Благов · книга, стр. 70</cite></blockquote>
+          <BookAudioPlayer />
           <div className="book-actions">
             <a className="button book-order" href="mailto:info@alexblagov.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B2%D0%B0">Заказать книгу <ArrowUpRight size={17} /></a>
             <Link className="book-audio" href="/book">Страница книги</Link>
@@ -551,12 +550,12 @@ export default function Home() {
       </section>
 
       <section id="contact" className="contact-section" aria-labelledby="contact-title">
-        <div className="contact-lead"><p className="section-kicker">Контакты</p><h2 id="contact-title">Обсудить проект</h2><p>Выберите направление и удобный способ связи. Сообщение можно подготовить заранее или сразу перейти в Telegram.</p></div>
+        <div className="contact-lead"><p className="section-kicker">Каналы и контакты</p><h2 id="contact-title">Быть на связи</h2><p>Новости, проекты и новые материалы Александра — в Telegram и ВКонтакте. По общим вопросам можно написать на электронную почту.</p></div>
         <div className="contact-main">
           <a className="contact-email" href="mailto:info@alexblagov.ru"><span>info@alexblagov.ru</span><ArrowUpRight size={32} strokeWidth={1.4} /></a>
-          <ContactComposer />
+          <p className="social-links-label">Следить за Александром</p>
           <div className="social-links" aria-label="Социальные сети">
-            <a href="https://t.me/blagovstyle" target="_blank" rel="noreferrer">Telegram <ArrowUpRight size={14} /></a>
+            <a href="https://t.me/blagovstyle" target="_blank" rel="noreferrer">Telegram-канал <ArrowUpRight size={14} /></a>
             <a href="https://vk.com/blagovstyle" target="_blank" rel="noreferrer">ВКонтакте <ArrowUpRight size={14} /></a>
           </div>
         </div>
@@ -565,12 +564,11 @@ export default function Home() {
       <footer className="site-footer">
         <div className="footer-meta"><span>© 2026 Александр Благов</span><span>Предприниматель · Крым</span></div>
         <div className="footer-links" aria-label="Социальные сети и навигация">
-          <a href="https://t.me/blagovstyle" target="_blank" rel="noreferrer">Telegram <ArrowUpRight size={13} /></a>
+          <a href="https://t.me/blagovstyle" target="_blank" rel="noreferrer">Telegram-канал <ArrowUpRight size={13} /></a>
           <a href="https://vk.com/blagovstyle" target="_blank" rel="noreferrer">ВКонтакте <ArrowUpRight size={13} /></a>
           <a href="#top">Наверх ↑</a>
         </div>
       </footer>
-      <a className="mobile-contact-fab" href="https://t.me/top_crimea_manager" target="_blank" rel="noreferrer" aria-label="Написать менеджеру в Telegram"><Send size={17} /> Связаться</a>
     </main>
   );
 }
