@@ -20,7 +20,6 @@ import MobileMenu from "./mobile-menu";
 import VkClipsCarousel from "./vk-clips-carousel";
 import StageGallery from "./stage-gallery";
 import DeferredVideo from "./deferred-video";
-import ProjectExplorer from "./project-explorer";
 import ContactComposer from "./contact-composer";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -248,7 +247,11 @@ export default function Home() {
               восточном Крыму.
             </p>
             <span className="project-meta-note">Компания · недвижимость · территории</span>
-            <Link className="project-detail-link" href="/projects">Открыть портфель проектов <ArrowUpRight size={17} /></Link>
+            <div className="project-context-actions" aria-label="Точка Притяжения — ссылки">
+              <Link className="project-detail-link" href="/projects">Открыть портфель <ArrowUpRight size={17} /></Link>
+              <a href="https://t.me/CrimeaPoint" target="_blank" rel="noreferrer">Telegram-канал <ArrowUpRight size={16} /></a>
+              <a href="https://t.me/top_crimea_manager" target="_blank" rel="noreferrer">Связаться с менеджером <Send size={15} /></a>
+            </div>
             <details className="project-disclosure">
               <summary>Что входит в направление</summary>
               <div className="project-disclosure-body">
@@ -320,7 +323,31 @@ export default function Home() {
           <div><strong>Восточный Крым</strong><small>море · земля · новые пространства</small></div>
           <MapPin size={32} strokeWidth={1.2} />
         </div>
-        <ProjectExplorer />
+        <div className="portfolio-grid" aria-label="Проекты компании Точка Притяжения">
+          {territoryProjects.map((project, index) => (
+            <article className={`portfolio-card ${index === 0 ? "portfolio-card-featured" : ""}`} key={project.name}>
+              <div className="portfolio-card-visual">
+                <Image src={project.image} alt={project.imageAlt} fill unoptimized sizes={index === 0 ? "(max-width: 820px) 100vw, 58vw" : "(max-width: 820px) 100vw, 31vw"} />
+                <span>{String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <div className="portfolio-card-top"><span>{project.type}</span><span>Восточный Крым · 45°</span></div>
+              <h3>{project.name}</h3>
+              <p>{project.text}</p>
+              {index === 0 ? (
+                <Link href="/projects">Подробнее о территориях <ArrowUpRight size={17} /></Link>
+              ) : (
+                <span className="portfolio-state">В портфеле «Точки Притяжения»</span>
+              )}
+            </article>
+          ))}
+        </div>
+        <div className="territory-contact-bar" aria-label="Контакты компании Точка Притяжения">
+          <span>Точка Притяжения</span>
+          <div>
+            <a href="https://t.me/CrimeaPoint" target="_blank" rel="noreferrer">Telegram-канал <ArrowUpRight size={16} /></a>
+            <a href="https://t.me/top_crimea_manager" target="_blank" rel="noreferrer">Связаться с менеджером <Send size={15} /></a>
+          </div>
+        </div>
       </section>
 
       <section className="cinematic-break" aria-label="Принцип работы">
@@ -447,8 +474,8 @@ export default function Home() {
 
       <section className="facts-section" aria-labelledby="facts-title">
         <div className="facts-visual">
-          <Image src="/images/alexander-public-speaking-real.webp" alt="Александр Благов выступает перед аудиторией" fill unoptimized sizes="(max-width: 820px) 100vw, 34vw" />
-          <span>Практика · сцена · работа с людьми</span>
+          <Image src="/images/alexander-life-stage-archive.webp" alt="Александр Благов в славянской рубахе на большом событии проекта Жизнь без страха" fill unoptimized sizes="(max-width: 820px) 100vw, 52vw" />
+          <span>Большое событие · сцена · живое сообщество</span>
         </div>
         <div className="facts-content">
           <div className="facts-heading"><p className="section-kicker">Масштаб проекта</p><h2 id="facts-title">«Жизнь без страха» в цифрах</h2><p>Показатели приведены по материалам самого проекта.</p></div>
@@ -482,7 +509,7 @@ export default function Home() {
           <p>Публичные выступления, архивные материалы и телевизионные проекты Александра.</p>
         </div>
         <div className="video-layout">
-          <DeferredVideo src="https://vkvideo.ru/video_ext.php?oid=-143114802&id=456239298&hash=bc17e526c0789def" title="Александр Благов — Мотивация Жизнь без страха" poster="/images/alexander-stage-microphone-v2.webp" />
+          <DeferredVideo src="https://vkvideo.ru/video_ext.php?oid=-143114802&id=456239298&hash=bc17e526c0789def" title="Александр Благов — Мотивация Жизнь без страха" />
           <div className="video-copy">
             <PlayCircle size={38} strokeWidth={1.2} /><span>Архив · 2019 · VK Видео</span>
             <h3>Мотивация «Жизнь без страха»</h3>
@@ -490,7 +517,7 @@ export default function Home() {
           </div>
         </div>
         <div className="video-layout video-layout-secondary">
-          <DeferredVideo src="https://vkvideo.ru/video_ext.php?oid=-127401043&id=456252277&hash=19791cfdae3d84e5" title="Финал проекта НТВ Гладиаторы с Александром Благовым" poster="/images/alexander-gladiators-ntv-real.webp" />
+          <DeferredVideo src="https://vkvideo.ru/video_ext.php?oid=-127401043&id=456252277&hash=19791cfdae3d84e5" title="Финал проекта НТВ Гладиаторы с Александром Благовым" />
           <div className="video-copy">
             <PlayCircle size={38} strokeWidth={1.2} /><span>Телепроект · 2025 · VK Видео</span>
             <h3>Финал спортивного шоу «Гладиаторы»</h3>
@@ -528,11 +555,21 @@ export default function Home() {
         <div className="contact-main">
           <a className="contact-email" href="mailto:info@alexblagov.ru"><span>info@alexblagov.ru</span><ArrowUpRight size={32} strokeWidth={1.4} /></a>
           <ContactComposer />
-          <div className="social-links" aria-label="Социальные сети"><a href="https://vk.com/blagovstyle" target="_blank" rel="noreferrer">ВКонтакте <ArrowUpRight size={14} /></a></div>
+          <div className="social-links" aria-label="Социальные сети">
+            <a href="https://t.me/blagovstyle" target="_blank" rel="noreferrer">Telegram <ArrowUpRight size={14} /></a>
+            <a href="https://vk.com/blagovstyle" target="_blank" rel="noreferrer">ВКонтакте <ArrowUpRight size={14} /></a>
+          </div>
         </div>
       </section>
 
-      <footer><span>© 2026 Александр Благов</span><span>Предприниматель · Крым</span><a href="#top">Наверх ↑</a></footer>
+      <footer className="site-footer">
+        <div className="footer-meta"><span>© 2026 Александр Благов</span><span>Предприниматель · Крым</span></div>
+        <div className="footer-links" aria-label="Социальные сети и навигация">
+          <a href="https://t.me/blagovstyle" target="_blank" rel="noreferrer">Telegram <ArrowUpRight size={13} /></a>
+          <a href="https://vk.com/blagovstyle" target="_blank" rel="noreferrer">ВКонтакте <ArrowUpRight size={13} /></a>
+          <a href="#top">Наверх ↑</a>
+        </div>
+      </footer>
       <a className="mobile-contact-fab" href="https://t.me/top_crimea_manager" target="_blank" rel="noreferrer" aria-label="Написать менеджеру в Telegram"><Send size={17} /> Связаться</a>
     </main>
   );
