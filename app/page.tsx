@@ -139,7 +139,7 @@ export default function Home() {
     name: "Александр Валерьевич Благов",
     alternateName: "Александр Благов",
     url: "https://alexblagov.ru/",
-    image: `${publicBasePath}/images/alexander-hero-coast-v6.webp`,
+    image: `${publicBasePath}/images/alexander-hero-real-2023.webp`,
     jobTitle: "Предприниматель, инвестор, девелопер",
     description:
       "Предприниматель и девелопер, работающий в Крыму; руководитель компании «Точка Притяжения», семейного проекта TOP THAI SPA и автор проекта «Жизнь без страха».",
@@ -199,13 +199,13 @@ export default function Home() {
         <div className="hero-visual hero-photo">
           <div className="portrait-frame">
             <Image
-              src="/images/alexander-hero-coast-v6.webp"
-              alt="Александр Благов на побережье у Бухты Космонавтов"
+              src="/images/alexander-hero-real-2023.webp"
+              alt="Александр Благов в белой рубахе"
               fill priority unoptimized sizes="(max-width: 820px) 1px, 57vw" className="portrait hero-photo-image portrait-desktop"
             />
             <Image
-              src="/images/alexander-hero-coast-mobile-v6.webp"
-              alt="Александр Благов на побережье Крыма"
+              src="/images/alexander-hero-real-2023-mobile.webp"
+              alt="Портрет Александра Благова"
               fill priority unoptimized sizes="(max-width: 820px) 100vw, 1px" className="portrait hero-photo-image portrait-mobile"
             />
             <div className="hero-photo-shade" aria-hidden="true" />
@@ -386,14 +386,14 @@ export default function Home() {
       <section id="family" className="family-section" aria-labelledby="family-title">
         <div className="family-visual">
           <Image
-            src="/images/alexander-family-crimea-real.webp"
-            alt="Александр Благов с семьёй на крымском побережье"
+            src="/images/alexander-family-real-2023.webp"
+            alt="Александр и Наталья Благовы с детьми"
             fill
             unoptimized
             sizes="(max-width: 900px) 100vw, 64vw"
             className="cover-image family-photo"
           />
-          <span className="family-caption">Семья · время вместе</span>
+          <span className="family-caption">Семья · Александр, Наталья и дети</span>
         </div>
         <div className="family-copy">
           <p className="section-kicker">Личное</p>
@@ -491,8 +491,8 @@ export default function Home() {
 
       <section id="book" className="book-section" aria-labelledby="book-title">
         <div className="book-art-panel">
-          <Image src="/images/alexander-book-published-restored.webp" alt="Александр Благов с изданной книгой Жизнь без страха" fill unoptimized sizes="(max-width: 900px) 100vw, 43vw" className="book-photo" />
-          <span className="book-photo-caption">Изданная книга · печатная версия</span>
+          <Image src="/images/alexander-book-published-restored.webp" alt="Александр Благов стоит с книгой «Жизнь без страха» в руках" fill unoptimized sizes="(max-width: 900px) 100vw, 43vw" className="book-photo" />
+          <span className="book-photo-caption">Автор · книга · личная история</span>
         </div>
         <div className="book-copy">
           <Image className="book-copy-motif" src="/images/manuscript-circle-life.webp" alt="" fill unoptimized sizes="420px" aria-hidden="true" />

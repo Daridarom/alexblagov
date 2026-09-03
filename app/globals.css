@@ -244,7 +244,7 @@ a:focus-visible { outline: 2px solid var(--solar); outline-offset: 5px; }
   animation: hero-photo-zoom 18s ease-in-out infinite alternate;
   filter: saturate(0.88) contrast(1.025) brightness(0.95);
   object-fit: cover;
-  object-position: 67% center;
+  object-position: center 44%;
   transform: scale(1.015);
   transform-origin: center;
   will-change: transform;

@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     url: "/",
     siteName: "Александр Благов",
-    images: [{ url: "https://daridarom.github.io/alexblagov/og.png", width: 1200, height: 630, alt: "Александр Благов — создавать то, что остаётся" }],
+    images: [{ url: "https://alex-blagov-preview.semenovspb.chatgpt.site/og.png", width: 1200, height: 630, alt: "Александр Благов — создавать то, что остаётся" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Александр Благов — создавать то, что остаётся",
     description: "Проекты в Крыму, предпринимательство, книга, спорт и работа с сообществами.",
-    images: ["https://daridarom.github.io/alexblagov/og.png"],
+    images: ["https://alex-blagov-preview.semenovspb.chatgpt.site/og.png"],
   },
   icons: {
     icon: `${publicBasePath}/favicon.svg`,
