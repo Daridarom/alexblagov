@@ -416,6 +416,71 @@ export default function Home() {
         <p className="career-note"><Award size={18} /> Также — серебряный призёр соревнований по зимнему плаванию в Санкт-Петербурге.</p>
       </section>
 
+      <section className="live-section section-dark" aria-labelledby="live-title">
+        <div className="section-heading split-heading on-dark live-heading">
+          <div>
+            <p className="section-kicker">Сцена и сообщество</p>
+            <h2 id="live-title">Энергия живого взаимодействия.</h2>
+          </div>
+          <p>
+            Выступление для Александра — не монолог, а пространство, где
+            внимание, доверие и энергия группы становятся общим опытом.
+          </p>
+        </div>
+        <div className="live-mosaic">
+          <figure className="live-shot live-shot-entrance">
+            <Image
+              src="/images/alexander-stage-entrance-v2.webp"
+              alt="Александр Благов выходит на сцену перед большим залом"
+              fill
+              unoptimized
+              sizes="(max-width: 820px) 100vw, 58vw"
+            />
+            <figcaption><span>Выход к аудитории</span><strong>Масштаб зала</strong></figcaption>
+          </figure>
+          <figure className="live-shot live-shot-microphone">
+            <Image
+              src="/images/alexander-stage-microphone-v2.webp"
+              alt="Александр Благов выступает с микрофоном"
+              fill
+              unoptimized
+              sizes="(max-width: 820px) 100vw, 42vw"
+            />
+            <figcaption><span>Выступление</span><strong>Прямой разговор</strong></figcaption>
+          </figure>
+          <figure className="live-shot live-shot-tunnel">
+            <Image
+              src="/images/alexander-community-tunnel-v2.webp"
+              alt="Участники программы создают живой коридор поддержки"
+              fill
+              unoptimized
+              sizes="(max-width: 820px) 100vw, 33vw"
+            />
+            <figcaption><span>Группа</span><strong>Движение вместе</strong></figcaption>
+          </figure>
+          <figure className="live-shot live-shot-circle">
+            <Image
+              src="/images/alexander-community-circle-v2.webp"
+              alt="Участники программы работают в кругу в панорамном зале"
+              fill
+              unoptimized
+              sizes="(max-width: 820px) 100vw, 33vw"
+            />
+            <figcaption><span>Пространство</span><strong>Живое сообщество</strong></figcaption>
+          </figure>
+          <figure className="live-shot live-shot-emotion">
+            <Image
+              src="/images/alexander-stage-emotion-v2.webp"
+              alt="Эмоциональный эпизод выступления Александра Благова на сцене"
+              fill
+              unoptimized
+              sizes="(max-width: 820px) 100vw, 33vw"
+            />
+            <figcaption><span>Сцена</span><strong>Работа с состоянием</strong></figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section className="legacy-section section-dark" aria-labelledby="legacy-title">
         <div className="legacy-image">
           <Image src="/images/alexander-life-guitar-restored-v2.webp" alt="Александр Благов с гитарой на природе" fill unoptimized sizes="(max-width: 900px) 100vw, 46vw" className="cover-image" />

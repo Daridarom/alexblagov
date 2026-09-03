@@ -624,6 +624,75 @@ a:focus-visible { outline: 2px solid var(--solar); outline-offset: 5px; }
 .career-note { align-items: center; color: var(--muted-light); display: flex; font-size: 12px; gap: 9px; line-height: 1.5; margin: 19px 0 0; }
 .career-note svg { color: var(--clay); flex: 0 0 auto; }
 
+.live-section {
+  background:
+    radial-gradient(circle at 12% 24%, rgba(114, 139, 136, 0.16), transparent 30%),
+    var(--ink-deep);
+  padding: clamp(94px, 9vw, 148px) clamp(22px, 7vw, 110px);
+}
+.live-heading { margin-bottom: 62px; }
+.live-heading h2 { max-width: 780px; }
+.live-mosaic {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: minmax(390px, 44vw) minmax(270px, 24vw);
+}
+.live-shot {
+  background: #141918;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+.live-shot::after {
+  background: linear-gradient(0deg, rgba(7, 11, 11, 0.8), transparent 48%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+.live-shot img {
+  filter: saturate(.82) contrast(1.035) brightness(.94);
+  object-fit: cover;
+  transition: filter 700ms ease, transform 1.2s ease;
+}
+.live-shot:hover img { filter: saturate(.92) contrast(1.025) brightness(.99); transform: scale(1.018); }
+.live-shot figcaption {
+  bottom: clamp(20px, 2.4vw, 34px);
+  color: white;
+  display: grid;
+  gap: 7px;
+  left: clamp(20px, 2.4vw, 34px);
+  position: absolute;
+  right: 20px;
+  z-index: 2;
+}
+.live-shot figcaption span {
+  color: var(--bronze-light);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.live-shot figcaption strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(22px, 2.4vw, 36px);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: 1.05;
+}
+.live-shot-entrance { grid-column: 1 / 8; }
+.live-shot-entrance img { object-position: center 46%; }
+.live-shot-microphone { grid-column: 8 / 13; }
+.live-shot-microphone img { object-position: center 36%; }
+.live-shot-tunnel { grid-column: 1 / 5; }
+.live-shot-tunnel img { object-position: center; }
+.live-shot-circle { grid-column: 5 / 9; }
+.live-shot-circle img { object-position: center 48%; }
+.live-shot-emotion { grid-column: 9 / 13; }
+.live-shot-emotion img { object-position: 58% center; }
+
 .legacy-section { display: grid; grid-template-columns: 0.92fr 1.08fr; min-height: 790px; }
 .legacy-image { min-height: 600px; overflow: hidden; position: relative; }
 .legacy-image::after { background: linear-gradient(0deg, rgba(11, 15, 15, 0.6), transparent 45%); content: ""; inset: 0; position: absolute; }
@@ -869,6 +938,10 @@ footer a { color: var(--paper-bright); }
   .story-photo-wide { height: 430px; }
   .story-editorial { height: 520px; }
   .practice-band { height: 380px; }
+  .live-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 540px 330px 330px; }
+  .live-shot-entrance { grid-column: 1 / 3; }
+  .live-shot-microphone, .live-shot-tunnel, .live-shot-circle, .live-shot-emotion { grid-column: auto; }
+  .live-shot-emotion { grid-column: 1 / 3; }
   .career-strip { grid-template-columns: 1fr 1fr; }
   .career-strip article, .career-strip article:first-child { min-height: 132px; padding: 24px 22px; }
   .career-strip article:nth-child(odd) { border-left: 0; }
@@ -956,6 +1029,16 @@ footer a { color: var(--paper-bright); }
   .practice-band figcaption strong { font-size: 39px; }
   .practice-band figcaption small { font-size: 12px; max-width: 270px; }
   .practice-band-line { display: none; }
+  .live-heading { margin-bottom: 42px; }
+  .live-mosaic { display: grid; grid-template-columns: 1fr; grid-template-rows: none; }
+  .live-shot, .live-shot-entrance, .live-shot-microphone, .live-shot-tunnel, .live-shot-circle, .live-shot-emotion {
+    aspect-ratio: 16 / 10;
+    grid-column: 1;
+  }
+  .live-shot-entrance { aspect-ratio: 16 / 11; }
+  .live-shot-microphone img { object-position: 56% center; }
+  .live-shot-circle img { object-position: center; }
+  .live-shot figcaption strong { font-size: 27px; }
   .vk-clips { gap: 34px; margin-top: 56px; padding-top: 42px; }
   .vk-clips-copy h3 { font-size: 46px; }
   .vk-clips-copy > p { max-width: 520px; }
