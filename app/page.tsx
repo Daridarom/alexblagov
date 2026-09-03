@@ -1,5 +1,4 @@
 import NextImage from "next/image";
-import Link from "next/link";
 import type { ComponentProps } from "react";
 import {
   ArrowDown,
@@ -21,6 +20,7 @@ import VkClipsCarousel from "./vk-clips-carousel";
 import StageGallery from "./stage-gallery";
 import DeferredVideo from "./deferred-video";
 import BookAudioPlayer from "./book-audio-player";
+import SectionNavigation from "./section-navigation";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -52,6 +52,8 @@ const territoryProjects = [
     text: "Концепция у Бухты Космонавтов: размещение, SPA, панорамное кафе, открытый берег и экотропы.",
     image: "/images/project-horizon-45.webp",
     imageAlt: "Обзорная концепция рекреационного проекта Горизонт 45 у моря",
+    details: "Общественный берег сохраняется открытым, а основные объекты размещаются выше — так, чтобы архитектура работала вместе с рельефом и видом на море.",
+    highlights: ["30 домов на склоне", "Панорамное кафе и SPA", "Амфитеатр и экотропы"],
   },
   {
     name: "Элиос",
@@ -59,6 +61,8 @@ const territoryProjects = [
     text: "Территория в восточном Крыму с туристической и социальной составляющей.",
     image: "/images/project-elios.webp",
     imageAlt: "Побережье и территория рекреационно-туристического проекта Элиос",
+    details: "Проект объединяет природный потенциал территории, туристическую инфраструктуру и сценарии, полезные для местного сообщества.",
+    highlights: ["Рекреация", "Туристическая инфраструктура", "Социальная составляющая"],
   },
   {
     name: "Боспор",
@@ -66,6 +70,8 @@ const territoryProjects = [
     text: "Камерный земельный проект для сообщества собственников и спокойной жизни в Крыму.",
     image: "/images/project-bospor.webp",
     imageAlt: "Купольное общественное пространство проекта Боспор",
+    details: "Камерная среда для людей, которым важны соседство, спокойный ритм и понятная организация общего пространства.",
+    highlights: ["Участки по 6 соток", "Клубное сообщество", "Камерный формат"],
   },
   {
     name: "Благодар",
@@ -73,6 +79,8 @@ const territoryProjects = [
     text: "Территория для виноградарства, сельского хозяйства и частных земельных проектов.",
     image: "/images/project-blagodar.webp",
     imageAlt: "Панорама земли и поселения аграрного направления Благодар",
+    details: "Аграрное направление, в котором частные земельные проекты соединяются с виноградарством и долгосрочным развитием территории.",
+    highlights: ["Виноградарство", "Сельское хозяйство", "Частные участки"],
   },
   {
     name: "СКИФ",
@@ -80,6 +88,8 @@ const territoryProjects = [
     text: "Проект в районе Щёлкино и Семёновки: земля, отдых и агротуристический формат.",
     image: "/images/project-skif.webp",
     imageAlt: "Архитектурная концепция агротуристического проекта СКИФ",
+    details: "Проект рядом с морем сочетает частные участки, общественную инфраструктуру, семейный отдых и агротуристический сценарий.",
+    highlights: ["56 участков", "Банный комплекс", "Спорт и отдых у моря"],
   },
 ];
 
@@ -165,6 +175,8 @@ export default function Home() {
         </a>
       </header>
 
+      <SectionNavigation />
+
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-copy">
           <h1 id="hero-title">
@@ -181,7 +193,6 @@ export default function Home() {
           </div>
           <div className="hero-actions">
             <a className="button button-light" href="#today">Чем занимается сегодня <ArrowDown size={18} /></a>
-            <a className="text-link light-link" href="mailto:info@alexblagov.ru">Написать <ArrowUpRight size={18} /></a>
           </div>
         </div>
 
@@ -246,9 +257,7 @@ export default function Home() {
             </p>
             <span className="project-meta-note">Компания · недвижимость · территории</span>
             <div className="project-context-actions" aria-label="Точка Притяжения — ссылки">
-              <Link className="project-detail-link" href="/projects">Открыть портфель <ArrowUpRight size={17} /></Link>
-              <a href="https://t.me/CrimeaPoint" target="_blank" rel="noreferrer">Канал проекта <ArrowUpRight size={16} /></a>
-              <a href="https://t.me/top_crimea_manager" target="_blank" rel="noreferrer">Связаться с менеджером <Send size={15} /></a>
+              <a className="project-detail-link" href="#portfolio">Смотреть проекты ниже <ArrowDown size={17} /></a>
             </div>
             <details className="project-disclosure">
               <summary>Что входит в направление</summary>
@@ -282,7 +291,6 @@ export default function Home() {
               <summary>Подробнее о бизнесе</summary>
               <p>Пространство восстановления с мастерами из Таиланда, традиционными техниками массажа и SPA-ритуалами. Александр развивает сервис, команду и клиентский опыт вместе с семьёй.</p>
               <a href="#spa">Полная информация ниже <ArrowDown size={16} /></a>
-              <Link href="/top-thai-spa">Отдельная страница <ArrowUpRight size={16} /></Link>
             </details>
           </article>
           <article className="today-card today-life-card">
@@ -296,7 +304,6 @@ export default function Home() {
               <summary>Развернуть историю</summary>
               <p>Проект начался с тренингов, квестов и курса «Приключение». В разные годы в него вошли командные испытания, походы, огненные и телесные практики, работа с вниманием, характером и ответственностью.</p>
               <a href="#story">Продолжение ниже <ArrowDown size={16} /></a>
-              <Link href="/life-without-fear">История проекта <ArrowUpRight size={16} /></Link>
             </details>
           </article>
           <article className="project-principle association-card">
@@ -313,8 +320,8 @@ export default function Home() {
 
       <section id="portfolio" className="portfolio-section section-light" aria-labelledby="portfolio-title">
         <div className="section-heading split-heading portfolio-heading">
-          <div><p className="section-kicker">Портфель территорий</p><h2 id="portfolio-title">Восточный Крым</h2></div>
-          <p>Земельные, рекреационные и туристические проекты на разных стадиях развития.</p>
+          <div><p className="section-kicker">Проекты «Точки Притяжения»</p><h2 id="portfolio-title">Восточный Крым</h2></div>
+          <p>Все направления собраны здесь: основная информация видна сразу, дополнительные детали раскрываются внутри карточек.</p>
         </div>
         <div className="latitude-panel" aria-label="Проекты в Восточном Крыму на 45-й параллели">
           <span className="latitude-value">45°</span><span className="latitude-axis" aria-hidden="true" />
@@ -331,11 +338,13 @@ export default function Home() {
               <div className="portfolio-card-top"><span>{project.type}</span><span>Восточный Крым · 45°</span></div>
               <h3>{project.name}</h3>
               <p>{project.text}</p>
-              {index === 0 ? (
-                <Link href="/projects">Подробнее о территориях <ArrowUpRight size={17} /></Link>
-              ) : (
-                <span className="portfolio-state">В портфеле «Точки Притяжения»</span>
-              )}
+              <details className="portfolio-disclosure">
+                <summary>Подробнее о проекте</summary>
+                <div className="portfolio-disclosure-body">
+                  <p>{project.details}</p>
+                  <ul>{project.highlights.map((item) => <li key={item}>{item}</li>)}</ul>
+                </div>
+              </details>
             </article>
           ))}
         </div>
@@ -369,8 +378,6 @@ export default function Home() {
             <div><HeartHandshake size={20} /><span>Семейный бизнес</span></div>
           </div>
           <div className="spa-actions">
-            <a className="button button-dark" href="https://topthaispa.ru/" target="_blank" rel="noreferrer">Сайт и запись <ArrowUpRight size={18} /></a>
-            <Link className="return-link" href="/top-thai-spa">О проекте подробнее →</Link>
             <a className="return-link" href="#today">Вернуться к направлениям ↑</a>
           </div>
         </div>
@@ -465,7 +472,6 @@ export default function Home() {
           <p className="lead-paragraph">Авторский проект вырос из работы с телом, характером и групповой динамикой в большое сообщество.</p>
           <p>В разные годы это были тренинги, квесты, экстремальные туры, фестивали, игровые и телесные практики. Сегодня этот опыт собран в методологию ТОП и книгу.</p>
           <div className="legacy-tags" aria-label="Форматы проекта"><span>Методология ТОП</span><span>Городские программы</span><span>Ретриты и клуб</span><span>Работа с командами</span></div>
-          <Link className="project-detail-link project-detail-link-dark" href="/life-without-fear">Открыть историю проекта <ArrowUpRight size={17} /></Link>
           <a className="return-link return-link-dark" href="#today">Вернуться к направлениям ↑</a>
         </div>
       </section>
@@ -495,9 +501,7 @@ export default function Home() {
           <blockquote><BookOpen size={30} strokeWidth={1.25} /><p>«Обучая других, я каждый раз учусь сам».</p><cite>Александр Благов · книга, стр. 70</cite></blockquote>
           <BookAudioPlayer />
           <div className="book-actions">
-            <a className="button book-order" href="mailto:info@alexblagov.ru?subject=%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B2%D0%B0">Заказать книгу <ArrowUpRight size={17} /></a>
-            <Link className="book-audio" href="/book">Страница книги</Link>
-            <a className="book-audio" href="mailto:info@alexblagov.ru?subject=%D0%90%D1%83%D0%B4%D0%B8%D0%BE%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F%20%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8">Узнать об аудиоверсии</a>
+            <a className="button book-order" href="mailto:info@alexblagov.ru?subject=%D0%92%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D0%BA%D0%BD%D0%B8%D0%B3%D0%B5%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B2%D0%B0">Связаться <ArrowUpRight size={17} /></a>
           </div>
         </div>
       </section>

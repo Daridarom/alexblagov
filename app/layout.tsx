@@ -11,15 +11,21 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Александр Благов",
+    title: "Александр Благов — создавать то, что остаётся",
     description:
-      "Проекты Александра Благова: территории Крыма, TOP THAI SPA и работа с сообществами.",
+      "Личный сайт Александра Благова: проекты в Крыму, предпринимательство, книга, спорт и работа с сообществами.",
     type: "profile",
     locale: "ru_RU",
     url: "/",
-    images: [{ url: "/images/alexander-hero-coast-v6.webp", width: 1600, height: 1200, alt: "Александр Благов в Крыму" }],
+    siteName: "Александр Благов",
+    images: [{ url: "https://daridarom.github.io/alexblagov/og.png", width: 1200, height: 630, alt: "Александр Благов — создавать то, что остаётся" }],
   },
-  twitter: { card: "summary_large_image", title: "Александр Благов", description: "Предприниматель, инвестор и проекты в Крыму.", images: ["/images/alexander-hero-coast-v6.webp"] },
+  twitter: {
+    card: "summary_large_image",
+    title: "Александр Благов — создавать то, что остаётся",
+    description: "Проекты в Крыму, предпринимательство, книга, спорт и работа с сообществами.",
+    images: ["https://daridarom.github.io/alexblagov/og.png"],
+  },
   icons: {
     icon: `${publicBasePath}/favicon.svg`,
     shortcut: `${publicBasePath}/favicon.svg`,

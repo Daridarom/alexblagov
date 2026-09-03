@@ -4,7 +4,7 @@ import { Pause, Play } from "lucide-react";
 import { type CSSProperties, useRef, useState } from "react";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const fallbackDuration = 49.6;
+const fallbackDuration = 56.8;
 
 function formatTime(value: number) {
   const safeValue = Number.isFinite(value) ? Math.max(0, value) : 0;
@@ -49,7 +49,6 @@ export default function BookAudioPlayer() {
         {isPlaying ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}
       </button>
       <div className="book-audio-content">
-        <span>Фрагмент аудиокниги · голос Александра</span>
         <strong>Зачем вам эта книга?</strong>
         <div className="book-audio-progress">
           <input
