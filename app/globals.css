@@ -227,30 +227,145 @@ a:focus-visible { outline: 2px solid var(--solar); outline-offset: 5px; }
 .light-link::after { background: var(--bronze-light); }
 .dark-link::after { background: var(--ink); }
 .hero-visual {
+  background: #263533;
+  isolation: isolate;
   min-height: 620px;
   overflow: hidden;
   position: relative;
   z-index: 2;
 }
-.portrait-frame { height: 100%; overflow: hidden; position: relative; }
-.portrait-frame::before {
-  background: linear-gradient(90deg, rgba(11, 15, 15, 0.72), transparent 18%);
+.spatial-hero {
+  --spatial-bg-x: 0px;
+  --spatial-bg-y: 0px;
+  --spatial-light-x: 50%;
+  --spatial-light-y: 38%;
+  --spatial-mid-x: 0px;
+  --spatial-mid-y: 0px;
+  --spatial-near-x: 0px;
+  --spatial-near-y: 0px;
+  --spatial-rotate-x: 0deg;
+  --spatial-rotate-y: 0deg;
+  --spatial-x: 0px;
+  --spatial-y: 0px;
+  perspective: 1250px;
+  touch-action: pan-y;
+  transform-style: preserve-3d;
+}
+.spatial-hero::after {
+  background: radial-gradient(circle at var(--spatial-light-x) var(--spatial-light-y), rgba(255, 239, 214, 0.12), transparent 31%);
   content: "";
   inset: 0;
   pointer-events: none;
   position: absolute;
+  transition: background-position 260ms ease;
+  z-index: 4;
+}
+.hero-coast-backdrop {
+  inset: -4%;
+  overflow: hidden;
+  position: absolute;
+  transform: translate3d(var(--spatial-bg-x), var(--spatial-bg-y), -34px) scale(1.08);
+  transition: transform 500ms cubic-bezier(.2,.7,.2,1);
+  will-change: transform;
+  z-index: 0;
+}
+.hero-coast-backdrop::after {
+  background:
+    linear-gradient(90deg, rgba(10, 15, 14, 0.78), rgba(10, 15, 14, 0.2) 52%, rgba(10, 15, 14, 0.42)),
+    linear-gradient(0deg, rgba(10, 15, 14, 0.66), transparent 48%);
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+.hero-coast-backdrop img {
+  filter: saturate(0.58) contrast(1.08) brightness(0.72);
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.018);
+}
+.hero-latitude {
+  align-items: center;
+  color: rgba(247, 242, 234, 0.74);
+  display: flex;
+  gap: 14px;
+  left: 22px;
+  position: absolute;
+  right: 22px;
+  top: 12%;
+  transform: translate3d(var(--spatial-mid-x), var(--spatial-mid-y), 18px);
+  transition: transform 430ms cubic-bezier(.2,.7,.2,1);
   z-index: 1;
 }
+.hero-latitude span {
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hero-latitude i {
+  background: rgba(247, 242, 234, 0.42);
+  display: block;
+  height: 1px;
+  position: relative;
+  width: 100%;
+}
+.hero-latitude i::after {
+  animation: hero-latitude-travel 9s ease-in-out infinite;
+  background: var(--bronze-light);
+  border-radius: 50%;
+  content: "";
+  height: 7px;
+  left: 15%;
+  position: absolute;
+  top: -3px;
+  width: 7px;
+}
+.portrait-frame {
+  aspect-ratio: 4 / 5;
+  background: #bac2b7;
+  border-left: 1px solid rgba(236, 204, 165, 0.72);
+  border-top: 1px solid rgba(236, 204, 165, 0.72);
+  bottom: 0;
+  box-shadow: -28px 30px 70px rgba(5, 9, 8, 0.34);
+  height: calc(100% - 72px);
+  max-width: calc(100% - 88px);
+  overflow: hidden;
+  position: absolute;
+  right: clamp(22px, 4vw, 64px);
+  transform: translate3d(var(--spatial-x), var(--spatial-y), 44px) rotateX(var(--spatial-rotate-x)) rotateY(var(--spatial-rotate-y));
+  transform-origin: center 44%;
+  transform-style: preserve-3d;
+  transition: transform 460ms cubic-bezier(.2,.72,.2,1), box-shadow 460ms ease;
+  will-change: transform;
+  z-index: 2;
+}
+.spatial-hero[data-spatial-active="true"] .portrait-frame {
+  box-shadow: -34px 36px 86px rgba(5, 9, 8, 0.42);
+}
+.portrait-frame::before {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  content: "";
+  inset: 13px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
 .portrait-frame::after {
-  background: linear-gradient(180deg, transparent 66%, rgba(11, 15, 15, 0.65));
+  background:
+    linear-gradient(90deg, rgba(32, 47, 44, 0.13), transparent 38%),
+    linear-gradient(180deg, transparent 72%, rgba(20, 29, 27, 0.23));
   content: "";
   inset: 0;
   position: absolute;
   z-index: 1;
 }
-.portrait { filter: saturate(0.88) contrast(1.02) brightness(0.96); object-fit: cover; object-position: 67% center; }
-.portrait-desktop { animation: hero-coast-breathe 18s ease-in-out infinite alternate; transform: scale(1.012); }
-.portrait-mobile { display: none; }
+.portrait {
+  filter: saturate(0.72) contrast(1.075) brightness(0.9) sepia(0.035);
+  object-fit: cover;
+  object-position: center;
+}
+.portrait-real { animation: hero-portrait-breathe 18s ease-in-out infinite alternate; transform: scale(1.006); }
 .location-note {
   align-items: center;
   background: rgba(11, 15, 15, 0.7);
@@ -266,6 +381,8 @@ a:focus-visible { outline: 2px solid var(--solar); outline-offset: 5px; }
   padding: 10px 14px;
   position: absolute;
   text-transform: uppercase;
+  transform: translate3d(var(--spatial-near-x), var(--spatial-near-y), 62px);
+  transition: transform 380ms cubic-bezier(.2,.72,.2,1);
   z-index: 4;
 }
 .hero-solar-watermark {
@@ -740,7 +857,8 @@ footer a { color: var(--paper-bright); }
 
 @keyframes rail-slide { to { transform: translateX(-50%); } }
 @keyframes sun-turn { to { transform: rotate(360deg); } }
-@keyframes hero-coast-breathe { to { transform: scale(1.045); } }
+@keyframes hero-portrait-breathe { to { transform: scale(1.025); } }
+@keyframes hero-latitude-travel { 0%, 100% { left: 12%; } 50% { left: 84%; } }
 @keyframes cinematic-breathe { to { transform: scale(1.055); } }
 @keyframes marker-drift { 0%, 100% { right: 42%; } 50% { right: 58%; } }
 @keyframes latitude-pulse { 0%, 100% { left: 16%; opacity: .4; } 50% { left: 78%; opacity: 1; } }
@@ -806,11 +924,12 @@ footer a { color: var(--paper-bright); }
   .hero-lead { margin-top: 28px; max-width: 620px; }
   .hero-status { max-width: 650px; }
   .hero-visual { aspect-ratio: 4 / 5; height: auto; max-height: 680px; min-height: 0; }
-  .portrait-frame::before { display: none; }
-  .portrait-frame::after { background: linear-gradient(0deg, rgba(11, 15, 15, 0.62), transparent 42%); }
-  .portrait-desktop { display: none; }
-  .portrait-mobile { animation: hero-coast-breathe 18s ease-in-out infinite alternate; display: block; object-position: center; transform: scale(1.012); }
-  .location-note { bottom: 20px; left: 20px; }
+  .hero-coast-backdrop img { object-position: 42% center; }
+  .hero-latitude { left: 16px; right: 16px; top: 7%; }
+  .portrait-frame { height: calc(100% - 42px); max-width: calc(100% - 40px); right: 0; }
+  .portrait-frame::after { background: linear-gradient(0deg, rgba(20, 29, 27, 0.26), transparent 32%); }
+  .portrait-real { animation: hero-portrait-breathe 18s ease-in-out infinite alternate; transform: scale(1.006); }
+  .location-note { bottom: 18px; left: 16px; }
   .hero-solar-watermark { bottom: auto; height: 410px; left: -145px; top: 195px; width: 360px; }
   .intro,
   .facts-section,
@@ -994,4 +1113,8 @@ footer a { color: var(--paper-bright); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .spatial-hero .hero-coast-backdrop,
+  .spatial-hero .hero-latitude,
+  .spatial-hero .portrait-frame,
+  .spatial-hero .location-note { transform: none !important; }
 }
