@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const socialPreviewUrl = "https://daridarom.github.io/alexblagov/og.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://alexblagov.ru"),
@@ -18,13 +19,13 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     url: "/",
     siteName: "Александр Благов",
-    images: [{ url: "https://alex-blagov-preview.semenovspb.chatgpt.site/og.png", width: 1200, height: 630, alt: "Александр Благов — создавать то, что остаётся" }],
+    images: [{ url: socialPreviewUrl, width: 1200, height: 630, alt: "Александр Благов — создавать то, что остаётся" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Александр Благов — создавать то, что остаётся",
     description: "Проекты в Крыму, предпринимательство, книга, спорт и работа с сообществами.",
-    images: ["https://alex-blagov-preview.semenovspb.chatgpt.site/og.png"],
+    images: [socialPreviewUrl],
   },
   icons: {
     icon: `${publicBasePath}/favicon.svg`,

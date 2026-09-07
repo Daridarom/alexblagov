@@ -136,7 +136,7 @@ export default function Home() {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Александр Валерьевич Благов",
+    name: "Александр Леонидович Благов",
     alternateName: "Александр Благов",
     url: "https://alexblagov.ru/",
     image: `${publicBasePath}/images/alexander-hero-real-2023.webp`,
