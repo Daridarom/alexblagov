@@ -2,7 +2,9 @@
 
 import NextImage from "next/image";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -17,33 +19,19 @@ const photos = [
 export default function StageGallery() {
   const [active, setActive] = useState<number | null>(null);
   const touchStart = useRef(0);
+  const openerRef = useRef<HTMLButtonElement | null>(null);
 
   const move = (direction: number) => {
     setActive((current) => current === null ? 0 : (current + direction + photos.length) % photos.length);
   };
 
-  useEffect(() => {
-    if (active === null) return;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setActive(null);
-      if (event.key === "ArrowLeft") move(-1);
-      if (event.key === "ArrowRight") move(1);
-    };
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [active]);
-
   const selected = active === null ? null : photos[active];
 
   return (
-    <>
-      <div className="live-mosaic">
+    <Dialog open={active !== null} onOpenChange={(open) => { if (!open) setActive(null); }}>
+      <div className="live-mosaic" tabIndex={0} aria-label="Фотографии выступлений и сообщества">
         {photos.map((photo, index) => (
-          <button className={`live-shot ${photo.className}`} type="button" key={photo.src} onClick={() => setActive(index)} aria-label={`Открыть фотографию: ${photo.title}`}>
+          <button className={`live-shot ${photo.className}`} type="button" key={photo.src} onClick={(event) => { openerRef.current = event.currentTarget; setActive(index); }} aria-label={`Открыть фотографию: ${photo.title}`}>
             <NextImage src={`${publicBasePath}${photo.src}`} alt={photo.alt} fill unoptimized sizes="(max-width: 820px) 100vw, 42vw" />
             <span className="live-shot-caption"><span>{photo.eyebrow}</span><strong>{photo.title}</strong></span>
           </button>
@@ -51,7 +39,14 @@ export default function StageGallery() {
       </div>
 
       {selected && active !== null && (
-        <div className="gallery-dialog" role="dialog" aria-modal="true" aria-label={`${selected.eyebrow}: ${selected.title}`} onClick={() => setActive(null)}>
+        <DialogContent className="gallery-dialog" showCloseButton={false} aria-describedby={undefined}
+          onCloseAutoFocus={(event) => { event.preventDefault(); openerRef.current?.focus(); }}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+              event.preventDefault(); move(event.key === "ArrowLeft" ? -1 : 1);
+            }
+          }}>
+          <DialogTitle className="sr-only">{selected.eyebrow}: {selected.title}</DialogTitle>
           <button className="gallery-close" type="button" onClick={() => setActive(null)} aria-label="Закрыть галерею"><X size={24} /></button>
           <button className="gallery-arrow gallery-arrow-left" type="button" onClick={(event) => { event.stopPropagation(); move(-1); }} aria-label="Предыдущая фотография"><ChevronLeft size={30} /></button>
           <figure className="gallery-dialog-figure" onClick={(event) => event.stopPropagation()} onTouchStart={(event) => { touchStart.current = event.touches[0]?.clientX ?? 0; }} onTouchEnd={(event) => { const end = event.changedTouches[0]?.clientX ?? 0; const distance = end - touchStart.current; if (Math.abs(distance) > 45) move(distance > 0 ? -1 : 1); }}>
@@ -59,8 +54,8 @@ export default function StageGallery() {
             <figcaption><span>{selected.eyebrow}</span><strong>{selected.title}</strong><small>{String(active + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}</small></figcaption>
           </figure>
           <button className="gallery-arrow gallery-arrow-right" type="button" onClick={(event) => { event.stopPropagation(); move(1); }} aria-label="Следующая фотография"><ChevronRight size={30} /></button>
-        </div>
+        </DialogContent>
       )}
-    </>
+    </Dialog>
   );
 }

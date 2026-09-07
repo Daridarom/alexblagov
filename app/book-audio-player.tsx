@@ -26,7 +26,17 @@ export default function BookAudioPlayer() {
 
   useEffect(() => {
     const audio = audioRef.current;
+    if (!audio) return;
+    const syncMetadata = () => {
+      setDuration(Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : 0);
+    };
+    audio.addEventListener("loadedmetadata", syncMetadata);
+    audio.addEventListener("durationchange", syncMetadata);
+    const frame = requestAnimationFrame(syncMetadata);
     return () => {
+      cancelAnimationFrame(frame);
+      audio.removeEventListener("loadedmetadata", syncMetadata);
+      audio.removeEventListener("durationchange", syncMetadata);
       playRequestRef.current += 1;
       audio?.pause();
     };
@@ -64,6 +74,7 @@ export default function BookAudioPlayer() {
         setDuration(0);
       }
       await audio.play();
+      updateDuration(audio);
       if (requestId === playRequestRef.current) {
         setStatus(audio.paused ? "paused" : "playing");
       }
@@ -130,7 +141,7 @@ export default function BookAudioPlayer() {
         preload="metadata"
         onLoadedMetadata={(event) => updateDuration(event.currentTarget)}
         onDurationChange={(event) => updateDuration(event.currentTarget)}
-        onPlaying={() => { setErrorMessage(""); setStatus("playing"); }}
+        onPlaying={(event) => { updateDuration(event.currentTarget); setErrorMessage(""); setStatus("playing"); }}
         onWaiting={(event) => { if (!event.currentTarget.paused) setStatus("loading"); }}
         onPause={() => setStatus((previous) => previous === "error" ? previous : "paused")}
         onError={() => reportError("Не удалось загрузить аудио. Проверьте соединение и нажмите кнопку повтора.")}

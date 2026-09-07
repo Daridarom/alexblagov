@@ -1,23 +1,24 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { siteUrl } from "@/lib/site-url";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const socialPreviewUrl = "https://daridarom.github.io/alexblagov/og.png";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://alexblagov.ru"),
+  metadataBase: new URL(siteUrl),
   title: "Александр Благов — предприниматель, инвестор, проекты в Крыму",
   description:
     "Личный сайт Александра Благова: «Точка Притяжения», TOP THAI SPA, проекты в Крыму, «Жизнь без страха», телесные практики, спорт и творческий путь.",
   robots: { index: true, follow: true },
-  alternates: { canonical: "/" },
+  alternates: { canonical: siteUrl },
   openGraph: {
     title: "Александр Благов — создавать то, что остаётся",
     description:
       "Личный сайт Александра Благова: проекты в Крыму, предпринимательство, книга, спорт и работа с сообществами.",
     type: "profile",
     locale: "ru_RU",
-    url: "/",
+    url: siteUrl,
     siteName: "Александр Благов",
     images: [{ url: socialPreviewUrl, width: 1200, height: 630, alt: "Александр Благов — создавать то, что остаётся" }],
   },

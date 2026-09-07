@@ -2,16 +2,19 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
+import DeferredVideo from "./deferred-video";
 
 const clips = [
   {
     src: "https://vkvideo.ru/video_ext.php?oid=34314310&id=456239533&hash=724d8caf9e3fbc86",
     title: "Личный взгляд",
+    poster: "/images/alexander-portrait-archive-bw.webp",
     meta: "Александр Благов · VK Клипы",
   },
   {
     src: "https://vkvideo.ru/video_ext.php?oid=34314310&id=456239477&hash=98c2f7d4eeddbf72",
     title: "За кадром «Гладиаторов»",
+    poster: "/images/alexander-gladiators-ntv-real.webp",
     meta: "Телепроект · VK Клипы",
   },
 ];
@@ -56,7 +59,7 @@ export default function VkClipsCarousel() {
       <div className="vk-clips-copy">
         <span>Короткий формат</span>
         <h3 id="vk-clips-title">Клипы</h3>
-        <p>Личные наблюдения, сцена и моменты из проектов Александра.</p>
+        <p>Мои наблюдения, выступления и жизнь за кадром.</p>
         <div className="vk-clips-navigation" aria-label="Управление каруселью клипов">
           <button type="button" onClick={() => goTo(activeIndex - 1)} disabled={activeIndex === 0} aria-label="Предыдущий клип">
             <ChevronLeft size={21} />
@@ -72,13 +75,7 @@ export default function VkClipsCarousel() {
         {clips.map((clip, index) => (
           <article className="vk-clip-card" key={clip.src} aria-label={`${index + 1} из ${clips.length}: ${clip.title}`}>
             <div className="vk-clip-frame">
-              <iframe
-                src={clip.src}
-                title={clip.title}
-                loading="lazy"
-                allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
-                allowFullScreen
-              />
+              <DeferredVideo src={clip.src} title={clip.title} poster={clip.poster} />
             </div>
             <div className="vk-clip-caption">
               <span>{clip.meta}</span>
