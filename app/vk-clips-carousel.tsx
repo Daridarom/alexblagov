@@ -8,13 +8,11 @@ const clips = [
   {
     src: "https://vkvideo.ru/video_ext.php?oid=34314310&id=456239533&hash=724d8caf9e3fbc86",
     title: "Личный взгляд",
-    poster: "/images/alexander-portrait-archive-bw.webp",
     meta: "Александр Благов · VK Клипы",
   },
   {
     src: "https://vkvideo.ru/video_ext.php?oid=34314310&id=456239477&hash=98c2f7d4eeddbf72",
     title: "За кадром «Гладиаторов»",
-    poster: "/images/alexander-gladiators-ntv-real.webp",
     meta: "Телепроект · VK Клипы",
   },
 ];
@@ -75,7 +73,7 @@ export default function VkClipsCarousel() {
         {clips.map((clip, index) => (
           <article className="vk-clip-card" key={clip.src} aria-label={`${index + 1} из ${clips.length}: ${clip.title}`}>
             <div className="vk-clip-frame">
-              <DeferredVideo src={clip.src} title={clip.title} poster={clip.poster} />
+              <DeferredVideo src={clip.src} title={clip.title} />
             </div>
             <div className="vk-clip-caption">
               <span>{clip.meta}</span>

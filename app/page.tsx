@@ -489,7 +489,7 @@ export default function Home() {
           <p>Мои выступления, архивные материалы и телевизионные проекты.</p>
         </div>
         <div className="video-layout">
-          <DeferredVideo src="https://vkvideo.ru/video_ext.php?oid=-143114802&id=456239298&hash=bc17e526c0789def" title="Александр Благов — Мотивация Жизнь без страха" poster="/images/alexander-life-stage-archive.webp" />
+          <DeferredVideo src="https://vkvideo.ru/video_ext.php?oid=-143114802&id=456239298&hash=bc17e526c0789def" title="Александр Благов — Мотивация Жизнь без страха" />
           <div className="video-copy">
             <PlayCircle size={38} strokeWidth={1.2} /><span>Архив · 2019 · VK Видео</span>
             <h3>Мотивация «Жизнь без страха»</h3>
@@ -497,7 +497,7 @@ export default function Home() {
           </div>
         </div>
         <div className="video-layout video-layout-secondary">
-          <DeferredVideo src="https://vkvideo.ru/video_ext.php?oid=-127401043&id=456252277&hash=19791cfdae3d84e5" title="Финал проекта НТВ Гладиаторы с Александром Благовым" poster="/images/alexander-gladiators-ntv-real.webp" />
+          <DeferredVideo src="https://vkvideo.ru/video_ext.php?oid=-127401043&id=456252277&hash=19791cfdae3d84e5" title="Финал проекта НТВ Гладиаторы с Александром Благовым" />
           <div className="video-copy">
             <PlayCircle size={38} strokeWidth={1.2} /><span>Телепроект · 2025 · VK Видео</span>
             <h3>Финал спортивного шоу «Гладиаторы»</h3>
