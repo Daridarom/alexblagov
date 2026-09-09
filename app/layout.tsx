@@ -3,7 +3,7 @@ import "./globals.css";
 import { siteUrl } from "@/lib/site-url";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const socialPreviewUrl = new URL("og.png", siteUrl).toString();
+const socialPreviewUrl = new URL("social-preview-20260909.jpg", siteUrl).toString();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     url: siteUrl,
     siteName: "Александр Благов",
-    images: [{ url: socialPreviewUrl, width: 1200, height: 630, type: "image/png", alt: "Александр Благов — мастер, тренер и предприниматель в Крыму" }],
+    images: [{ url: socialPreviewUrl, width: 1200, height: 630, type: "image/jpeg", alt: "Александр Благов. Развивать себя. Создавать вместе." }],
   },
   twitter: {
     card: "summary_large_image",
