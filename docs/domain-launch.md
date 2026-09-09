@@ -28,6 +28,9 @@ Workflow `Prepare REG.RU release` собирает отдельный ZIP-арт
 Внутри находится папка `alexblagov-release-<SHA коммита>` с файлами сайта и `.htaccess` для Apache.
 Этот workflow не подключается к хостингу и ничего на основном домене не переключает.
 Архив предназначен для распаковки в `/www/`, рядом с действующей папкой WordPress.
+Workflow публикации GitHub Pages также создаёт публичный `alexblagov-reg-ru.zip`.
+В панели REG.RU можно выбрать загрузку по ссылке `https://daridarom.github.io/alexblagov/alexblagov-reg-ru.zip`.
+В архиве только готовые публичные файлы; исходный код, доступы к хостингу и данные WordPress в него не входят.
 
 ## Что проверено
 

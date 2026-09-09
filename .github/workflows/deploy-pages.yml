@@ -37,6 +37,21 @@ jobs:
       - name: Check code quality
         run: npm run lint
 
+      - name: Build package for REG.RU
+        run: |
+          node scripts/build-domain.mjs
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+          root = Path('outputs/alexblagov.ru')
+          prefix = 'alexblagov-release-' + os.environ['GITHUB_SHA']
+          with ZipFile('public/alexblagov-reg-ru.zip', 'w', ZIP_DEFLATED) as archive:
+              for path in sorted(root.rglob('*')):
+                  if path.is_file():
+                      archive.write(path, f'{prefix}/{path.relative_to(root).as_posix()}')
+          PY
+
       - name: Build static site
         run: npm run build:pages
 
