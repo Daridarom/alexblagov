@@ -22,6 +22,8 @@ import DeferredVideo from "./deferred-video";
 import BookAudioPlayer from "./book-audio-player";
 import SectionNavigation from "./section-navigation";
 
+import { bookInquiry, crimeaManager, inquiryEmail, personalOffers } from "@/lib/offers";
+
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 function Image({ src, ...props }: ComponentProps<typeof NextImage>) {
@@ -140,9 +142,9 @@ export default function Home() {
     alternateName: "Александр Благов",
     url: siteUrl,
     image: `${siteUrl}images/alexander-hero-real-2023.webp`,
-    jobTitle: "Предприниматель, инвестор, девелопер",
+    jobTitle: "Предприниматель, мастер и тренер, автор направления ТОП",
     description:
-      "Предприниматель и девелопер, работающий в Крыму; руководитель компании «Точка Притяжения», семейного проекта TOP THAI SPA и автор проекта «Жизнь без страха».",
+      "Предприниматель в Крыму, мастер и тренер, автор направления ТОП и книги «Жизнь без страха». Развивает проекты компании «Точка Притяжения».",
     worksFor: [
       { "@type": "Organization", name: "Точка Притяжения" },
       { "@type": "Organization", name: "TOP THAI SPA" },
@@ -157,17 +159,16 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
-      <header className="site-header">
+      <header className="site-header purpose-header">
         <a className="wordmark" href="#top" aria-label="Александр Благов — наверх">
           <span className="wordmark-sign"><BlagovSolarCrest className="wordmark-crest" /></span>
           <span className="wordmark-name"><strong>Александр Благов</strong><small>Личный сайт · Крым</small></span>
         </a>
         <nav aria-label="Основная навигация">
-          <a href="#today">Сегодня</a>
-          <a href="#portfolio">Территории</a>
-          <a href="#story">Путь</a>
+          <a href="#practice">Работа со мной</a>
           <a href="#book">Книга</a>
-          <a href="#media">Видео</a>
+          <a href="#portfolio">Проекты в Крыму</a>
+          <a href="#journey">Мой путь</a>
         </nav>
         <MobileMenu />
         <a className="header-contact" href="#contact" aria-label="Перейти к контактам">
@@ -177,23 +178,17 @@ export default function Home() {
 
       <SectionNavigation />
 
-      <section className="hero" aria-labelledby="hero-title">
+      <section className="hero purpose-hero" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <h1 id="hero-title">
-            <span>Предприниматель.</span>
-            <span>Инвестор.</span>
-            <span className="hero-accent">Проекты&nbsp;в&nbsp;Крыму.</span>
-          </h1>
-          <p className="hero-lead">
-            Создаю проекты в Крыму, развиваю семейный SPA-бизнес
-            и объединяю людей вокруг общего дела.
-          </p>
-          <div className="hero-status" aria-label="Основные направления">
-            <span>Точка Притяжения</span><span>TOP THAI SPA</span><span>Жизнь без страха</span>
+          <p className="hero-eyebrow">Личный сайт · Крым</p>
+          <h1 id="hero-title"><span>Александр</span><span className="hero-accent">Благов</span></h1>
+          <p className="hero-role">Предприниматель. Мастер и тренер.<br />Автор направления ТОП.</p>
+          <p className="hero-lead">Работаю с людьми через консультации и программы. Вместе с командой развиваю проекты для жизни и отдыха в Крыму.</p>
+          <div className="hero-actions purpose-actions">
+            <a className="button button-light" href="#practice">Программы и консультации <ArrowDown size={18} /></a>
+            <a className="button button-outline" href="#portfolio">Проекты в Крыму <ArrowDown size={18} /></a>
           </div>
-          <div className="hero-actions">
-            <a className="button button-light" href="#today">Мои проекты <ArrowDown size={18} /></a>
-          </div>
+          <a className="hero-book-link" href="#book"><BookOpen size={17} /> Книга «Жизнь без страха»</a>
         </div>
 
         <div className="hero-visual hero-photo">
@@ -217,27 +212,59 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="intro section-light" aria-labelledby="intro-title">
-        <div className="section-kicker">Позиция</div>
-        <div className="intro-copy">
-          <h2 id="intro-title">Создавать то, что остаётся.</h2>
-          <p>
-            Мой опыт — это предпринимательство, спорт и работа с людьми.
-            Сегодня я соединяю его в проектах для жизни, отдыха и общения.
-          </p>
+      <section id="journey" className="journey-section section-light" aria-labelledby="journey-title">
+        <div className="section-heading split-heading">
+          <div><p className="section-kicker">Мой путь</p><h2 id="journey-title">От личной практики<br />к общим проектам.</h2></div>
+          <p>Спорт, работа с группами и предпринимательство — части моего опыта. Сегодня я продолжаю работать как мастер и тренер и развиваю проекты в Крыму.</p>
+        </div>
+        <ol className="journey-steps">
+          <li><span>01 · С чего начинал</span><h3>Спорт и характер</h3><p>Единоборства, физическая подготовка, испытания на выносливость. Опыт дисциплины и работы над собой.</p></li>
+          <li><span>02 · Работа с людьми</span><h3>«Жизнь без страха»</h3><p>С 2009 года — программы, события и сообщество. Этот опыт получил продолжение в направлении ТОП и книге.</p></li>
+          <li><span>03 · Чем занимаюсь сейчас</span><h3>Практика и Крым</h3><p>Консультации и авторские программы; земельные и туристические проекты вместе с командой «Точки Притяжения».</p></li>
+        </ol>
+        <a className="journey-more" href="#story">Фотографии, выступления и спортивный путь <ArrowDown size={17} /></a>
+      </section>
+
+      <section id="practice" className="practice-section section-dark" aria-labelledby="practice-title">
+        <div className="section-heading split-heading on-dark">
+          <div><p id="today" className="section-kicker">01 · Работа со мной</p><h2 id="practice-title">Консультации.<br />ТОП. Программы.</h2></div>
+          <p>Я — мастер, тренер и автор направления ТОП. В моей работе соединяются телесная практика, движение, внимание и взаимодействие с людьми. Начать можно с личного запроса, знакомства с программой или приглашения для вашей группы.</p>
+        </div>
+        <div className="offer-grid">
+          {personalOffers.map((offer) => (
+            <article className="offer-card" key={offer.id} id={offer.id}>
+              <span className="offer-number">{offer.number}</span><h3>{offer.title}</h3>
+              <p className="offer-for">{offer.forWhom}</p>
+              <p>{offer.description}</p>
+              <a className="offer-action" href={inquiryEmail(offer.subject, offer.body)}>{offer.action}<ArrowUpRight size={18} /></a>
+            </article>
+          ))}
+        </div>
+        <div className="offer-next-step"><span>Как начать</span><p>Напишите, с каким запросом обращаетесь. Формат, дату и стоимость обсуждаем до записи. Для приглашения на мероприятие укажите город, аудиторию и предполагаемую дату.</p></div>
+      </section>
+
+      <section id="book" className="book-section" aria-labelledby="book-title">
+        <div className="book-art-panel">
+          <Image src="/images/alexander-book-published-restored.webp" alt="Александр Благов стоит с книгой «Жизнь без страха» в руках" fill unoptimized sizes="(max-width: 900px) 100vw, 43vw" className="book-photo" />
+          <span className="book-photo-caption">Автор · книга · личная история</span>
+        </div>
+        <div className="book-copy">
+          <p className="section-kicker">Книга · издана</p><h2 id="book-title">«Жизнь без страха»</h2>
+          <p>Для тех, кто хочет познакомиться с моим подходом через личную историю. В книге — опыт работы с людьми, игровые практики, дисциплина и внимание к себе. Есть печатная и аудиоверсия.</p>
+          <blockquote><BookOpen size={30} strokeWidth={1.25} /><p>«Обучая других, я каждый раз учусь сам».</p><cite>Александр Благов · книга, стр. 70</cite></blockquote>
+          <BookAudioPlayer />
+          <div className="book-actions">
+            <a className="button book-order" href={bookInquiry}>Заказать книгу <ArrowUpRight size={17} /></a>
+          </div>
+          <p className="book-order-note">Заказ по почте: напишите, какой формат вам интересен. Уточним наличие, стоимость и способ получения.</p>
         </div>
       </section>
 
-      <section id="today" className="today-section section-dark" aria-labelledby="today-title">
-        <div className="section-heading on-dark">
-          <p className="section-kicker">Сегодня</p>
-          <h2 id="today-title">Три направления. Один подход.</h2>
-          <p>
-            Практичные проекты с понятной ролью: развивать территории,
-            создавать качественный сервис и собирать людей вокруг общего дела.
-          </p>
+      <section id="portfolio" className="portfolio-section section-light purpose-portfolio" aria-labelledby="portfolio-title">
+        <div className="section-heading split-heading portfolio-heading">
+          <div><p className="section-kicker">02 · Развитие Крыма</p><h2 id="portfolio-title">Земля. Проекты.<br />Партнёрство.</h2></div>
+          <p>Вместе с командой «Точки Притяжения» развиваю земельные и туристические проекты в восточном Крыму. Здесь можно обсудить покупку участка, инвестиционное участие или деловое партнёрство.</p>
         </div>
-
         <article className="project-feature">
           <div className="project-latitude-motif" aria-hidden="true"><span>45°</span><i /></div>
           <div className="project-number">01</div>
@@ -249,9 +276,7 @@ export default function Home() {
               земельные, рекреационные и туристические проекты в восточном Крыму.
             </p>
             <span className="project-meta-note">Компания · недвижимость · территории</span>
-            <div className="project-context-actions" aria-label="Точка Притяжения — ссылки">
-              <a className="project-detail-link" href="#portfolio">Смотреть проекты ниже <ArrowDown size={17} /></a>
-            </div>
+
             <details className="project-disclosure">
               <summary>Что входит в направление</summary>
               <div className="project-disclosure-body">
@@ -263,7 +288,7 @@ export default function Home() {
                     unoptimized
                     sizes="(max-width: 820px) 100vw, 28vw"
                   />
-                  <span>Восточный Крым · концепция · реализация</span>
+                  <span>Восточный Крым · концепции проектов</span>
                 </div>
                 <div className="project-disclosure-grid">
                   {territoryProjects.map((project) => (
@@ -275,46 +300,10 @@ export default function Home() {
           </div>
         </article>
 
-        <div className="project-grid">
-          <article id="spa" className="today-card today-spa-card">
-            <div className="today-card-preview"><Image src="/images/alexander-top-thai-together-harmonized.webp" alt="Александр и Наталья на открытии TOP THAI SPA" fill unoptimized sizes="(max-width: 820px) 100vw, 32vw" /></div>
-            <span>02 · Семейный бизнес</span><h3>TOP THAI SPA</h3>
-            <p>Действующий салон тайского массажа и SPA-программ в Керчи.</p>
-            <details className="card-disclosure">
-              <summary>Подробнее о бизнесе</summary>
-              <p>Вместе с семьёй я развиваю салон в Керчи: мастера из Таиланда, традиционные техники массажа и SPA-программы. Для меня важны команда, качество сервиса и внимание к гостю.</p>
-              <div className="detail-photo"><Image src="/images/alexander-top-thai-event-real.webp" alt="Александр Благов на событии TOP THAI SPA" fill unoptimized sizes="(max-width: 820px) 100vw, 32vw" /></div>
-            </details>
-          </article>
-          <article className="today-card today-life-card">
-            <div className="today-card-preview today-life-preview">
-              <span className="today-life-shot"><Image src="/images/alexander-life-festival-real.webp" alt="Команда фестиваля Жизнь без страха" fill unoptimized sizes="(max-width: 820px) 65vw, 22vw" /></span>
-              <span className="today-life-shot"><Image src="/images/alexander-life-festival-motion-real.webp" alt="Живой фестивальный кадр проекта Жизнь без страха" fill unoptimized sizes="(max-width: 820px) 35vw, 12vw" /></span>
-            </div>
-            <span>03 · Проект с 2009 года</span><h3>Жизнь без страха</h3>
-            <p>Методология, программы, телесная практика и работа с сообществом.</p>
-            <details className="card-disclosure">
-              <summary>Развернуть историю</summary>
-              <p>Проект начался с тренингов, квестов и курса «Приключение». В разные годы в него вошли командные испытания, походы, огненные и телесные практики, работа с вниманием, характером и ответственностью.</p>
-              <a href="#story">Продолжение ниже <ArrowDown size={16} /></a>
-            </details>
-          </article>
-          <article className="project-principle association-card">
-            <Image src="/images/alexander-nail-practice-real.webp" alt="Практика гвоздестояния на природе" fill unoptimized sizes="(max-width: 820px) 100vw, 35vw" className="association-photo" />
-            <div className="association-shade" aria-hidden="true" />
-            <div className="association-content">
-              <HeartHandshake size={30} strokeWidth={1.2} /><span>Практика и рекордное движение</span>
-              <p>Президент Ассоциации гвоздепрактиков и основатель движения гвоздестояния в России.</p>
-              <div className="association-facts"><strong>6</strong><small>мировых рекордов в биографии</small></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="portfolio" className="portfolio-section section-light" aria-labelledby="portfolio-title">
-        <div className="section-heading split-heading portfolio-heading">
-          <div><p className="section-kicker">Проекты «Точки Притяжения»</p><h2 id="portfolio-title">Восточный Крым</h2></div>
-          <p>Проекты и концепции нашей команды: отдых у моря, клубные пространства и агротуризм. Текущий этап и возможности участия можно обсудить с менеджером.</p>
+        <div className="participation-grid" aria-label="Способы участия в проектах Крыма">
+          <article><span>Для себя</span><h3>Подобрать участок</h3><p>Расскажите о цели покупки, интересующей локации и бюджете. Менеджер уточнит доступные предложения, условия и возможность просмотра.</p><a href={crimeaManager} target="_blank" rel="noreferrer">Обсудить участок <ArrowUpRight size={18} /></a></article>
+          <article><span>Для инвестора</span><h3>Обсудить участие</h3><p>Запросите материалы интересующего проекта, его текущий этап и возможные условия участия.</p><a href={crimeaManager} target="_blank" rel="noreferrer">Запросить материалы проекта <ArrowUpRight size={18} /></a></article>
+          <article><span>Для бизнеса</span><h3>Предложить партнёрство</h3><p>Представьте вашу команду, опыт и предложение по совместной работе в одном из проектов.</p><a href={crimeaManager} target="_blank" rel="noreferrer">Обсудить сотрудничество <ArrowUpRight size={18} /></a></article>
         </div>
         <div className="latitude-panel" aria-label="Проекты в Восточном Крыму на 45-й параллели">
           <span className="latitude-value">45°</span><span className="latitude-axis" aria-hidden="true" />
@@ -338,13 +327,14 @@ export default function Home() {
                   <ul>{project.highlights.map((item) => <li key={item}>{item}</li>)}</ul>
                 </div>
               </details>
+              <a className="project-inquiry" href={crimeaManager} target="_blank" rel="noreferrer" aria-label={`Обсудить проект «${project.name}» с менеджером`}>Обсудить «{project.name}» <ArrowUpRight size={17} /></a>
             </article>
           ))}
         </div>
         <div className="territory-contact-bar" aria-label="Контакты компании Точка Притяжения">
           <span>Точка Притяжения</span>
           <div>
-            <a href="https://t.me/CrimeaPoint" target="_blank" rel="noreferrer">Канал проекта <ArrowUpRight size={16} /></a>
+            <a href="https://t.me/CrimeaPoint" target="_blank" rel="noreferrer">Новости проектов <ArrowUpRight size={16} /></a>
             <a href="https://t.me/top_crimea_manager" target="_blank" rel="noreferrer">Связаться с менеджером <Send size={15} /></a>
           </div>
         </div>
@@ -357,29 +347,9 @@ export default function Home() {
         <div className="cinematic-orbit" aria-hidden="true"><i /><i /></div>
       </section>
 
-      <section id="family" className="family-section" aria-labelledby="family-title">
-        <div className="family-visual">
-          <Image
-            src="/images/alexander-family-real-2023.webp"
-            alt="Александр и Наталья Благовы с детьми"
-            fill
-            unoptimized
-            sizes="(max-width: 900px) 100vw, 64vw"
-            className="cover-image family-photo"
-          />
-          <span className="family-caption">Семья · Александр, Наталья и дети</span>
-        </div>
-        <div className="family-copy">
-          <p className="section-kicker">Личное</p>
-          <h2 id="family-title">Быть рядом.</h2>
-          <p>Я — отец. Семья даёт мне опору и напоминает о главном: быть рядом, уделять время близким и отвечать за свои решения.</p>
-          <div className="family-mark" aria-hidden="true"><BlagovSolarCrest /></div>
-        </div>
-      </section>
-
       <section id="story" className="story-section section-light" aria-labelledby="story-title">
         <div className="section-heading split-heading story-heading">
-          <div><p className="section-kicker">Живой опыт</p><h2 id="story-title">Движение, огонь и характер</h2></div>
+          <div><p className="section-kicker">Опыт, на котором строится моя работа</p><h2 id="story-title">Движение, огонь и характер</h2></div>
           <p>В моих программах соединялись походы, командные испытания, народные игры, работа с огнём и физическая подготовка.</p>
         </div>
         <div className="story-mosaic">
@@ -434,6 +404,7 @@ export default function Home() {
           </p>
         </div>
         <StageGallery />
+        <a className="experience-action" href={inquiryEmail(personalOffers[2].subject, personalOffers[2].body)}>Пригласить Александра для вашей группы <ArrowUpRight size={18} /></a>
       </section>
 
       <details className="history-disclosure">
@@ -467,19 +438,61 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="book" className="book-section" aria-labelledby="book-title">
-        <div className="book-art-panel">
-          <Image src="/images/alexander-book-published-restored.webp" alt="Александр Благов стоит с книгой «Жизнь без страха» в руках" fill unoptimized sizes="(max-width: 900px) 100vw, 43vw" className="book-photo" />
-          <span className="book-photo-caption">Автор · книга · личная история</span>
+      <details className="history-disclosure background-disclosure">
+        <summary>Семейный бизнес и общественная работа <span>TOP THAI SPA · «Жизнь без страха» · гвоздестояние</span></summary>
+        <div className="project-grid background-grid">
+          <article id="spa" className="today-card today-spa-card">
+            <div className="today-card-preview"><Image src="/images/alexander-top-thai-together-harmonized.webp" alt="Александр и Наталья на открытии TOP THAI SPA" fill unoptimized sizes="(max-width: 820px) 100vw, 32vw" /></div>
+            <span>Семейный бизнес</span><h3>TOP THAI SPA</h3>
+            <p>Действующий салон тайского массажа и SPA-программ в Керчи.</p>
+            <details className="card-disclosure">
+              <summary>Подробнее о бизнесе</summary>
+              <p>Вместе с семьёй я развиваю салон в Керчи: мастера из Таиланда, традиционные техники массажа и SPA-программы. Для меня важны команда, качество сервиса и внимание к гостю.</p>
+              <div className="detail-photo"><Image src="/images/alexander-top-thai-event-real.webp" alt="Александр Благов на событии TOP THAI SPA" fill unoptimized sizes="(max-width: 820px) 100vw, 32vw" /></div>
+            </details>
+          </article>
+          <article className="today-card today-life-card">
+            <div className="today-card-preview today-life-preview">
+              <span className="today-life-shot"><Image src="/images/alexander-life-festival-real.webp" alt="Команда фестиваля Жизнь без страха" fill unoptimized sizes="(max-width: 820px) 65vw, 22vw" /></span>
+              <span className="today-life-shot"><Image src="/images/alexander-life-festival-motion-real.webp" alt="Живой фестивальный кадр проекта Жизнь без страха" fill unoptimized sizes="(max-width: 820px) 35vw, 12vw" /></span>
+            </div>
+            <span>Проект с 2009 года</span><h3>Жизнь без страха</h3>
+            <p>Методология, программы, телесная практика и работа с сообществом.</p>
+            <details className="card-disclosure">
+              <summary>Развернуть историю</summary>
+              <p>Проект начался с тренингов, квестов и курса «Приключение». В разные годы в него вошли командные испытания, походы, огненные и телесные практики, работа с вниманием, характером и ответственностью.</p>
+              <a href="#story">Продолжение ниже <ArrowDown size={16} /></a>
+            </details>
+          </article>
+          <article className="project-principle association-card">
+            <Image src="/images/alexander-nail-practice-real.webp" alt="Практика гвоздестояния на природе" fill unoptimized sizes="(max-width: 820px) 100vw, 35vw" className="association-photo" />
+            <div className="association-shade" aria-hidden="true" />
+            <div className="association-content">
+              <HeartHandshake size={30} strokeWidth={1.2} /><span>Практика и рекордное движение</span>
+              <p>Президент Ассоциации гвоздепрактиков и основатель движения гвоздестояния в России.</p>
+              <div className="association-facts"><strong>6</strong><small>мировых рекордов в биографии</small></div>
+            </div>
+          </article>
         </div>
-        <div className="book-copy">
-          <p className="section-kicker">Книга · издана</p><h2 id="book-title">«Жизнь без страха»</h2>
-          <p>В книге я собрал личную историю и опыт работы с людьми: игровые практики, дисциплину и внимание к себе. Книга вышла в печатной и аудиоверсии.</p>
-          <blockquote><BookOpen size={30} strokeWidth={1.25} /><p>«Обучая других, я каждый раз учусь сам».</p><cite>Александр Благов · книга, стр. 70</cite></blockquote>
-          <BookAudioPlayer />
-          <div className="book-actions">
-            <a className="button book-order" href="mailto:info@alexblagov.ru?subject=%D0%92%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D0%BA%D0%BD%D0%B8%D0%B3%D0%B5%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%91%D0%BB%D0%B0%D0%B3%D0%BE%D0%B2%D0%B0">Вопрос по книге <ArrowUpRight size={17} /></a>
-          </div>
+      </details>
+
+      <section id="family" className="family-section" aria-labelledby="family-title">
+        <div className="family-visual">
+          <Image
+            src="/images/alexander-family-real-2023.webp"
+            alt="Александр и Наталья Благовы с детьми"
+            fill
+            unoptimized
+            sizes="(max-width: 900px) 100vw, 64vw"
+            className="cover-image family-photo"
+          />
+          <span className="family-caption">Семья · Александр, Наталья и дети</span>
+        </div>
+        <div className="family-copy">
+          <p className="section-kicker">Личное</p>
+          <h2 id="family-title">Быть рядом.</h2>
+          <p>Я — отец. Семья даёт мне опору и напоминает о главном: быть рядом, уделять время близким и отвечать за свои решения.</p>
+          <div className="family-mark" aria-hidden="true"><BlagovSolarCrest /></div>
         </div>
       </section>
 
@@ -523,24 +536,23 @@ export default function Home() {
 
       </details>
 
-      <section id="contact" className="contact-section" aria-labelledby="contact-title">
-        <div className="contact-lead"><p className="section-kicker">Каналы и контакты</p><h2 id="contact-title">Быть на связи</h2><p>По проектам в Крыму свяжитесь с нашей командой. Вопросы о книге принимаю по почте, а новостями делюсь в Telegram и ВКонтакте.</p></div>
-        <div className="contact-main">
-          <div className="contact-routes">
-            <a href="https://t.me/top_crimea_manager" target="_blank" rel="noreferrer"><span>Обсудить проект в Крыму</span><ArrowUpRight size={20} /></a>
-            <a href="mailto:info@alexblagov.ru?subject=Вопрос%20по%20книге"><span>Вопрос по книге</span><Mail size={20} /></a>
-          </div>
-          <a className="contact-email" href="mailto:info@alexblagov.ru"><span>info@alexblagov.ru</span><ArrowUpRight size={32} strokeWidth={1.4} /></a>
-          <p className="social-links-label">Следить за Александром</p>
-          <div className="social-links" aria-label="Социальные сети">
-            <a href="https://t.me/blagovstyle" target="_blank" rel="noreferrer">Telegram-канал <ArrowUpRight size={14} /></a>
-            <a href="https://vk.com/blagovstyle" target="_blank" rel="noreferrer">ВКонтакте <ArrowUpRight size={14} /></a>
-          </div>
+      <section id="contact" className="contact-section purpose-contact" aria-labelledby="contact-title">
+        <div className="contact-lead"><p className="section-kicker">Следующий шаг</p><h2 id="contact-title">С чем вы хотите<br />обратиться?</h2><p>Выберите тему — консультация, программа, книга или участие в крымском проекте.</p></div>
+        <div className="contact-options">
+          <div className="contact-option"><span>Работа с Александром</span><h3>Практика, программы и книга</h3><p>Обращения по почте — с темой вашего запроса.</p><div className="contact-routes">
+            {personalOffers.map((offer) => <a key={offer.id} href={inquiryEmail(offer.subject, offer.body)}><span>{offer.action}</span><ArrowUpRight size={18} /></a>)}
+            <a href={bookInquiry}><span>Заказать книгу</span><BookOpen size={18} /></a>
+          </div><a className="contact-address" href="mailto:info@alexblagov.ru">info@alexblagov.ru</a></div>
+          <div className="contact-option"><span>Команда «Точки Притяжения»</span><h3>Проекты в Крыму</h3><p>Для покупки участка, инвестиционного участия и делового партнёрства — менеджер проектов в Telegram.</p><a className="contact-manager" href={crimeaManager} target="_blank" rel="noreferrer">Обсудить участие в проекте <Send size={20} /></a><a className="contact-address" href="https://t.me/CrimeaPoint" target="_blank" rel="noreferrer">Следить за развитием проектов <ArrowUpRight size={16} /></a></div>
         </div>
+        <div className="contact-social"><span>Мои публикации и новости</span><div className="social-links">
+          <a href="https://t.me/blagovstyle" target="_blank" rel="noreferrer">Telegram-канал <ArrowUpRight size={14} /></a>
+          <a href="https://vk.com/blagovstyle" target="_blank" rel="noreferrer">ВКонтакте <ArrowUpRight size={14} /></a>
+        </div></div>
       </section>
 
       <footer className="site-footer">
-        <div className="footer-meta"><span>© 2026 Александр Благов</span><span>Предприниматель · Крым</span></div>
+        <div className="footer-meta"><span>© 2026 Александр Благов</span><span>Практика · Проекты · Крым</span></div>
         <div className="footer-links" aria-label="Социальные сети и навигация">
           <a href="https://t.me/blagovstyle" target="_blank" rel="noreferrer">Telegram-канал <ArrowUpRight size={13} /></a>
           <a href="https://vk.com/blagovstyle" target="_blank" rel="noreferrer">ВКонтакте <ArrowUpRight size={13} /></a>

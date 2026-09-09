@@ -4,13 +4,13 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const links = [
-  ["Сегодня", "#today"],
-  ["Территории", "#portfolio"],
-  ["Семья", "#family"],
-  ["Путь и спорт", "#story"],
-  ["Книга", "#book"],
+  ["Мой путь", "#journey"],
+  ["Консультации и программы", "#practice"],
+  ["Заказать книгу", "#book"],
+  ["Проекты в Крыму", "#portfolio"],
+  ["Опыт и выступления", "#story"],
   ["Видео", "#media"],
-  ["Контакты", "#contact"],
+  ["Обратиться", "#contact"],
 ];
 
 export default function MobileMenu() {

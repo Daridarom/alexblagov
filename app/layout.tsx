@@ -7,9 +7,9 @@ const socialPreviewUrl = "https://daridarom.github.io/alexblagov/og.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Александр Благов — предприниматель, инвестор, проекты в Крыму",
+  title: "Александр Благов — консультации, программы ТОП и проекты в Крыму",
   description:
-    "Личный сайт Александра Благова: «Точка Притяжения», TOP THAI SPA, проекты в Крыму, «Жизнь без страха», телесные практики, спорт и творческий путь.",
+    "Консультации и авторские программы Александра Благова, направление ТОП, книга «Жизнь без страха». Покупка участков, инвестиционное участие и партнёрство в проектах Крыма.",
   robots: { index: true, follow: true },
   alternates: { canonical: siteUrl },
   openGraph: {

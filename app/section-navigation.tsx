@@ -1,14 +1,14 @@
 "use client";
 
-import { BookOpen, MapPin, Mountain, PlayCircle, Sparkles } from "lucide-react";
+import { BookOpen, MapPin, Mountain, Mail, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const sections = [
-  { id: "today", label: "Сегодня", Icon: Sparkles },
-  { id: "portfolio", label: "Проекты", Icon: MapPin },
-  { id: "story", label: "Путь", Icon: Mountain },
+  { id: "journey", label: "Путь", Icon: Mountain },
+  { id: "practice", label: "Работа", Icon: Sparkles },
   { id: "book", label: "Книга", Icon: BookOpen },
-  { id: "media", label: "Видео", Icon: PlayCircle },
+  { id: "portfolio", label: "Крым", Icon: MapPin },
+  { id: "contact", label: "Связь", Icon: Mail },
 ];
 
 export default function SectionNavigation() {
