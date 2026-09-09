@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { cpSync, mkdirSync, rmSync } from "node:fs";
+import { cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { resolve } from "node:path";
 
@@ -24,4 +24,5 @@ if (build.status !== 0) process.exit(build.status ?? 1);
 rmSync(destination, { recursive: true, force: true });
 mkdirSync(destination, { recursive: true });
 cpSync(resolve(projectRoot, "out"), destination, { recursive: true });
+writeFileSync(resolve(destination, ".htaccess"), "DirectoryIndex index.html\nOptions -Indexes\nErrorDocument 404 /404.html\n");
 console.log(`Domain build ready: ${destination}`);

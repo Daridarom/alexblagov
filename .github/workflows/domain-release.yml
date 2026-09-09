@@ -1,0 +1,40 @@
+name: Prepare REG.RU release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/domain-release.yml'
+      - 'app/**'
+      - 'components/**'
+      - 'lib/**'
+      - 'public/**'
+      - 'scripts/build-domain.mjs'
+      - 'next.config.ts'
+      - 'package*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: node scripts/build-domain.mjs
+      - name: Prepare isolated release directory
+        run: |
+          mkdir -p release_package/alexblagov-release-${{ github.sha }}
+          cp -a outputs/alexblagov.ru/. release_package/alexblagov-release-${{ github.sha }}/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: alexblagov-reg-ru
+          path: release_package/
+          include-hidden-files: true
+          retention-days: 30
