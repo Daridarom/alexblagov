@@ -3,7 +3,7 @@ import "./globals.css";
 import { siteUrl } from "@/lib/site-url";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const socialPreviewUrl = "https://daridarom.github.io/alexblagov/og.png";
+const socialPreviewUrl = new URL("og.png", siteUrl).toString();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -13,18 +13,18 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: siteUrl },
   openGraph: {
-    title: "Александр Благов — мастер, тренер и предприниматель в Крыму",
+    title: "Сайт Александра Благова",
     description:
       "Консультации, программы ТОП, книга «Жизнь без страха» и проекты для жизни, отдыха и партнёрства в Крыму.",
     type: "profile",
     locale: "ru_RU",
     url: siteUrl,
     siteName: "Александр Благов",
-    images: [{ url: socialPreviewUrl, width: 1200, height: 630, alt: "Александр Благов — мастер, тренер и предприниматель в Крыму" }],
+    images: [{ url: socialPreviewUrl, width: 1200, height: 630, type: "image/png", alt: "Александр Благов — мастер, тренер и предприниматель в Крыму" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Александр Благов — мастер, тренер и предприниматель в Крыму",
+    title: "Сайт Александра Благова",
     description: "Консультации, программы ТОП, книга «Жизнь без страха» и проекты в Крыму.",
     images: [socialPreviewUrl],
   },
