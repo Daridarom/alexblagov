@@ -159,6 +159,8 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
+      <a className="skip-link" href="#journey">Перейти к основному содержанию</a>
+
       <header className="site-header purpose-header">
         <a className="wordmark" href="#top" aria-label="Александр Благов — наверх">
           <span className="wordmark-sign"><BlagovSolarCrest className="wordmark-crest" /></span>
@@ -183,7 +185,8 @@ export default function Home() {
           <p className="hero-eyebrow">Личный сайт · Крым</p>
           <h1 id="hero-title"><span>Александр</span><span className="hero-accent">Благов</span></h1>
           <p className="hero-role">Предприниматель. Мастер и тренер.<br />Автор направления ТОП.</p>
-          <p className="hero-lead">Работаю с людьми через консультации и программы. Вместе с командой развиваю проекты для жизни и отдыха в Крыму.</p>
+          <p className="hero-lead">Провожу личные консультации, авторские программы и практики ТОП. Вместе с командой развиваю проекты для жизни и отдыха в Крыму.</p>
+          <span className="hero-choice">Выберите направление</span>
           <div className="hero-actions purpose-actions">
             <a className="button button-light" href="#practice">Программы и консультации <ArrowDown size={18} /></a>
             <a className="button button-outline" href="#portfolio">Проекты в Крыму <ArrowDown size={18} /></a>
@@ -240,7 +243,7 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <div className="offer-next-step"><span>Как начать</span><p>Напишите, с каким запросом обращаетесь. Формат, дату и стоимость обсуждаем до записи. Для приглашения на мероприятие укажите город, аудиторию и предполагаемую дату.</p></div>
+        <div className="offer-next-step"><span>Как начать</span><p>Выберите тему и отправьте короткий запрос. Мы уточним задачу, предложим подходящий формат и заранее согласуем дату и стоимость. Для мероприятия укажите город, аудиторию и предполагаемую дату.</p></div>
       </section>
 
       <section id="book" className="book-section" aria-labelledby="book-title">
@@ -537,7 +540,7 @@ export default function Home() {
       </details>
 
       <section id="contact" className="contact-section purpose-contact" aria-labelledby="contact-title">
-        <div className="contact-lead"><p className="section-kicker">Следующий шаг</p><h2 id="contact-title">С чем вы хотите<br />обратиться?</h2><p>Выберите тему — консультация, программа, книга или участие в крымском проекте.</p></div>
+        <div className="contact-lead"><p className="section-kicker">Следующий шаг</p><h2 id="contact-title">Что вы хотите<br />обсудить?</h2><p>Выберите тему — консультация, программа, книга или участие в крымском проекте.</p></div>
         <div className="contact-options">
           <div className="contact-option"><span>Работа с Александром</span><h3>Практика, программы и книга</h3><p>Обращения по почте — с темой вашего запроса.</p><div className="contact-routes">
             {personalOffers.map((offer) => <a key={offer.id} href={inquiryEmail(offer.subject, offer.body)}><span>{offer.action}</span><ArrowUpRight size={18} /></a>)}

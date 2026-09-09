@@ -11,6 +11,17 @@ const sections = [
   { id: "contact", label: "Связь", Icon: Mail },
 ];
 
+const observedSections = [
+  { id: "journey", active: "journey" },
+  { id: "practice", active: "practice" },
+  { id: "book", active: "book" },
+  { id: "portfolio", active: "portfolio" },
+  { id: "story", active: "journey" },
+  { id: "family", active: "journey" },
+  { id: "media", active: "journey" },
+  { id: "contact", active: "contact" },
+];
+
 export default function SectionNavigation() {
   const [active, setActive] = useState(sections[0].id);
   const [progress, setProgress] = useState(0);
@@ -25,9 +36,9 @@ export default function SectionNavigation() {
 
       const marker = window.innerHeight * 0.42;
       let current = sections[0].id;
-      for (const section of sections) {
+      for (const section of observedSections) {
         const element = document.getElementById(section.id);
-        if (element && element.getBoundingClientRect().top <= marker) current = section.id;
+        if (element && element.getBoundingClientRect().top <= marker) current = section.active;
       }
       setActive(current);
       frame = 0;
