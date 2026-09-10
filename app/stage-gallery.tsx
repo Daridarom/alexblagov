@@ -39,7 +39,7 @@ export default function StageGallery() {
       </div>
 
       {selected && active !== null && (
-        <DialogContent className="gallery-dialog" showCloseButton={false} aria-describedby={undefined}
+        <DialogContent className="gallery-dialog" aria-describedby={undefined}
           onCloseAutoFocus={(event) => { event.preventDefault(); openerRef.current?.focus(); }}
           onKeyDown={(event) => {
             if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
