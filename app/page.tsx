@@ -167,10 +167,11 @@ export default function Home() {
           <span className="wordmark-name"><strong>Александр Благов</strong><small>Личный сайт · Крым</small></span>
         </a>
         <nav aria-label="Основная навигация">
+          <a href="#journey">Мой путь</a>
           <a href="#practice">Работа со мной</a>
           <a href="#book">Книга</a>
           <a href="#portfolio">Проекты в Крыму</a>
-          <a href="#journey">Мой путь</a>
+          <a href="#story">Опыт</a>
         </nav>
         <MobileMenu />
         <a className="header-contact" href="#contact" aria-label="Перейти к контактам">
