@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, MapPin, Mountain, Mail, Sparkles } from "lucide-react";
+import { BookOpen, MapPin, Mountain, Mail, Sparkles, Flame } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const sections = [
@@ -8,6 +8,7 @@ const sections = [
   { id: "practice", label: "Работа", Icon: Sparkles },
   { id: "book", label: "Книга", Icon: BookOpen },
   { id: "portfolio", label: "Крым", Icon: MapPin },
+  { id: "story", label: "Опыт", Icon: Flame },
   { id: "contact", label: "Связь", Icon: Mail },
 ];
 
@@ -16,24 +17,20 @@ const observedSections = [
   { id: "practice", active: "practice" },
   { id: "book", active: "book" },
   { id: "portfolio", active: "portfolio" },
-  { id: "story", active: "journey" },
-  { id: "family", active: "journey" },
-  { id: "media", active: "journey" },
+  { id: "story", active: "story" },
+  { id: "family", active: "story" },
+  { id: "media", active: "story" },
   { id: "contact", active: "contact" },
 ];
 
 export default function SectionNavigation() {
   const [active, setActive] = useState(sections[0].id);
-  const [progress, setProgress] = useState(0);
+  const activeIndex = sections.findIndex((section) => section.id === active);
 
   useEffect(() => {
     let frame = 0;
 
     const update = () => {
-      const page = document.documentElement;
-      const scrollable = Math.max(1, page.scrollHeight - window.innerHeight);
-      setProgress(Math.min(100, Math.max(0, (window.scrollY / scrollable) * 100)));
-
       const marker = window.innerHeight * 0.42;
       let current = sections[0].id;
       for (const section of observedSections) {
@@ -60,7 +57,7 @@ export default function SectionNavigation() {
 
   return (
     <nav className="mobile-section-dock" aria-label="Быстрая навигация по разделам">
-      <span className="mobile-dock-progress" aria-hidden="true"><i style={{ width: `${progress}%` }} /></span>
+      <span className="mobile-dock-progress" aria-hidden="true"><i style={{ width: `${100 / sections.length}%`, transform: `translateX(${activeIndex * 100}%)` }} /></span>
       {sections.map(({ id, label, Icon }) => (
         <a className={active === id ? "is-active" : ""} href={`#${id}`} key={id} aria-current={active === id ? "location" : undefined}>
           <Icon size={18} />
