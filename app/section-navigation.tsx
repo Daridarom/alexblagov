@@ -1,15 +1,15 @@
 "use client";
 
 import { BookOpen, MapPin, Mountain, Mail, Sparkles, Flame } from "lucide-react";
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
 const sections = [
-  { id: "journey", label: "Путь", Icon: Mountain },
-  { id: "practice", label: "Работа", Icon: Sparkles },
-  { id: "book", label: "Книга", Icon: BookOpen },
-  { id: "portfolio", label: "Крым", Icon: MapPin },
-  { id: "story", label: "Опыт", Icon: Flame },
-  { id: "contact", label: "Связь", Icon: Mail },
+  { id: "journey", label: "Путь", headerLabel: "Мой путь", Icon: Mountain },
+  { id: "practice", label: "Работа", headerLabel: "Работа со мной", Icon: Sparkles },
+  { id: "book", label: "Книга", headerLabel: "Книга", Icon: BookOpen },
+  { id: "portfolio", label: "Крым", headerLabel: "Проекты в Крыму", Icon: MapPin },
+  { id: "story", label: "Опыт", headerLabel: "Опыт", Icon: Flame },
+  { id: "contact", label: "Связь", headerLabel: null, Icon: Mail },
 ];
 
 const observedSections = [
@@ -23,9 +23,10 @@ const observedSections = [
   { id: "contact", active: "contact" },
 ];
 
-export default function SectionNavigation() {
+const ActiveSectionContext = createContext(sections[0].id);
+
+export function SectionNavigationProvider({ children }: { children: ReactNode }) {
   const [active, setActive] = useState(sections[0].id);
-  const activeIndex = sections.findIndex((section) => section.id === active);
 
   useEffect(() => {
     let frame = 0;
@@ -54,6 +55,27 @@ export default function SectionNavigation() {
       if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
+
+  return <ActiveSectionContext.Provider value={active}>{children}</ActiveSectionContext.Provider>;
+}
+
+export function HeaderNavigation() {
+  const active = useContext(ActiveSectionContext);
+
+  return (
+    <nav aria-label="Основная навигация">
+      {sections.filter((section) => section.headerLabel).map(({ id, headerLabel }) => (
+        <a className={active === id ? "is-active" : ""} href={`#${id}`} key={id} aria-current={active === id ? "location" : undefined}>
+          {headerLabel}
+        </a>
+      ))}
+    </nav>
+  );
+}
+
+export default function SectionNavigation() {
+  const active = useContext(ActiveSectionContext);
+  const activeIndex = sections.findIndex((section) => section.id === active);
 
   return (
     <nav className="mobile-section-dock" aria-label="Быстрая навигация по разделам">

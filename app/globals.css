@@ -142,6 +142,7 @@ a:focus-visible { outline: 2px solid var(--solar); outline-offset: 5px; }
   white-space: nowrap;
 }
 .site-header nav a:hover, .header-contact:hover { color: var(--bronze-light); }
+.site-header nav a.is-active { color: var(--bronze-light); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; }
 .header-contact { align-items: center; display: flex; gap: 9px; justify-content: center; justify-self: end; min-height: 44px; min-width: 44px; }
 
 .hero {
@@ -1135,8 +1136,8 @@ footer a { color: var(--paper-bright); }
   .live-shot-circle img { object-position: center; }
   .live-shot-caption strong { font-size: 27px; }
   .gallery-dialog { grid-template-columns: 48px minmax(0, 1fr) 48px; padding: 18px 8px; }
-  .gallery-arrow { height: 42px; width: 42px; }
-  .gallery-close { height: 42px; right: 14px; top: 14px; width: 42px; }
+  .gallery-arrow { height: 48px; width: 48px; }
+  .gallery-close { height: 48px; right: 14px; top: 14px; width: 48px; }
   .vk-clips { gap: 34px; margin-top: 56px; padding-top: 42px; }
   .vk-clips-copy h3 { font-size: 46px; }
   .vk-clips-copy > p { max-width: 520px; }

@@ -20,7 +20,7 @@ import VkClipsCarousel from "./vk-clips-carousel";
 import StageGallery from "./stage-gallery";
 import DeferredVideo from "./deferred-video";
 import BookAudioPlayer from "./book-audio-player";
-import SectionNavigation from "./section-navigation";
+import SectionNavigation, { HeaderNavigation, SectionNavigationProvider } from "./section-navigation";
 
 import { bookInquiry, brandTagline, crimeaManager, inquiryEmail, personalOffers } from "@/lib/offers";
 
@@ -161,25 +161,21 @@ export default function Home() {
 
       <a className="skip-link" href="#journey">Перейти к основному содержанию</a>
 
-      <header className="site-header purpose-header">
-        <a className="wordmark" href="#top" aria-label="Александр Благов — наверх">
-          <span className="wordmark-sign"><BlagovSolarCrest className="wordmark-crest" /></span>
-          <span className="wordmark-name"><strong>Александр Благов</strong><small>Личный сайт · Крым</small></span>
-        </a>
-        <nav aria-label="Основная навигация">
-          <a href="#journey">Мой путь</a>
-          <a href="#practice">Работа со мной</a>
-          <a href="#book">Книга</a>
-          <a href="#portfolio">Проекты в Крыму</a>
-          <a href="#story">Опыт</a>
-        </nav>
-        <MobileMenu />
-        <a className="header-contact" href="#contact" aria-label="Перейти к контактам">
-          <Mail size={18} strokeWidth={1.7} /><span>Связаться</span>
-        </a>
-      </header>
+      <SectionNavigationProvider>
+        <header className="site-header purpose-header">
+          <a className="wordmark" href="#top" aria-label="Александр Благов — наверх">
+            <span className="wordmark-sign"><BlagovSolarCrest className="wordmark-crest" /></span>
+            <span className="wordmark-name"><strong>Александр Благов</strong><small>Личный сайт · Крым</small></span>
+          </a>
+          <HeaderNavigation />
+          <MobileMenu />
+          <a className="header-contact" href="#contact" aria-label="Перейти к контактам">
+            <Mail size={18} strokeWidth={1.7} /><span>Связаться</span>
+          </a>
+        </header>
 
-      <SectionNavigation />
+        <SectionNavigation />
+      </SectionNavigationProvider>
 
       <section className="hero purpose-hero" aria-labelledby="hero-title">
         <div className="hero-copy">
