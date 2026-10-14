@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     url: siteUrl,
     siteName: "Александр Благов",
-    images: [{ url: socialPreviewUrl, width: 1200, height: 630, type: "image/jpeg", alt: "Александр Благов. Развивать себя. Создавать вместе." }],
+    images: [{ url: socialPreviewUrl, width: 1200, height: 630, type: "image/jpeg", alt: "Александр Благов. Себя невозможно найти — себя можно только создать." }],
   },
   twitter: {
     card: "summary_large_image",
