@@ -1,5 +1,5 @@
 export const crimeaManager = "https://t.me/top_crimea_manager";
-export const brandTagline = "Развивать себя. Создавать вместе.";
+export const brandTagline = "Себя невозможно найти — себя можно только создать.";
 
 export function inquiryEmail(subject: string, body: string) {
   return `mailto:info@alexblagov.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
