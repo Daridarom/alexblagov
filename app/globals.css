@@ -1483,3 +1483,10 @@ summary:focus-visible, button:focus-visible { outline: 2px solid var(--solar); o
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .hero-photo-image { animation: none !important; transform: scale(1.02) !important; }
 }
+
+/* Hero credentials: regalia visible on first screen (feedback 14.10.2026). */
+.hero-credentials { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 22px; margin: 24px 0 0; padding: 18px 0 0; border-top: 1px solid rgba(217,177,132,.28); max-width: 620px; }
+.hero-credentials li { display: flex; flex-direction: column; gap: 3px; }
+.hero-credentials strong { color: var(--bronze-light); font-family: Georgia, "Times New Roman", serif; font-size: 1.25rem; font-weight: 400; line-height: 1.2; }
+.hero-credentials span { color: var(--paper-bright); opacity: .82; font-size: .8125rem; line-height: 1.4; }
+@media (max-width: 520px) { .hero-credentials { gap: 12px 16px; } .hero-credentials strong { font-size: 1.0625rem; } .hero-credentials span { font-size: .75rem; } }
