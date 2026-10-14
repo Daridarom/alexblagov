@@ -3,7 +3,7 @@ import "./globals.css";
 import { siteUrl } from "@/lib/site-url";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const socialPreviewUrl = new URL("social-preview-20260909.jpg", siteUrl).toString();
+const socialPreviewUrl = new URL("social-preview-20261014.jpg", siteUrl).toString();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
